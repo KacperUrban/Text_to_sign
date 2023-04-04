@@ -1,11 +1,6 @@
-FROM jupyter/tensorflow-notebook
-
+FROM jupyter/minimal-notebook
 WORKDIR /code
-
-RUN pip install jupyterlab-git
-
-COPY . /code
-
-ENV JUPYTER_ENABLE_LAB=yes
-
+COPY req.txt /code/
+RUN pip install -r req.txt
+COPY . /code/
 ENTRYPOINT ["start.sh", "jupyter", "lab", "--LabApp.token=''"]

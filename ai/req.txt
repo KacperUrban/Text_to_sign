@@ -1,0 +1,5 @@
+tensorflow==2.12.0
+numpy==1.23.5
+matplotlib==3.7.1
+sentencepiece==0.1.97
+transformers==4.27.4
