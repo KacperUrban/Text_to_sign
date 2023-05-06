@@ -5,3 +5,4 @@ sentencepiece==0.1.97
 transformers==4.27.4
 sacremoses==0.0.53
 pandas==2.0.1
+datasets==2.12.0
