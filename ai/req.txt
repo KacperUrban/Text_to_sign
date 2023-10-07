@@ -6,3 +6,5 @@ sacremoses==0.0.53
 pandas==2.0.1
 datasets==2.12.0
 odfpy==1.4.1
+sentencepiece==0.1.99
+neptune==1.8.0
