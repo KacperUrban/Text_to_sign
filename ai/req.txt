@@ -9,3 +9,4 @@ odfpy==1.4.1
 sentencepiece==0.1.99
 neptune==1.8.0
 neptune-tensorflow-keras==2.2.0
+evaluate==0.4.0
