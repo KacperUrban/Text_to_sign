@@ -6,8 +6,8 @@ language and polish sign language. The sign language is represent like a gloss, 
 
 ## Technologies
 * Python 
-* Docker
-* Docker compose
+* Neptune
+* Odfpy
 * Tensorflow
 * Transfomers
 * Pandas
