@@ -6,14 +6,22 @@ language and polish sign language. The sign language is represent like a gloss, 
 
 ## Setup
 First step is to download and clone git repository:
+
 git clone url_to_github_repo
+
 Next we want to create a virtual enviroment and download all libraries. I will use venv library. On Windows:
-python -m venv venv
-venv\Scripts\activate
+
+python -m venv venv\
+venv\Scripts\activate\
 pip install -r req.txt
+
 Second step is to create jupyter kernel from virtual enviroment.
+
 ipython kernel install --user --name=venv_kernel
-And then we can add virtual enviroment and kernel to for example a Visual Studio Code.
+
+And then we can add virtual enviroment and kernel to for example a Visual Studio Code. Before we can use code, please run this scripts:
+* preprocess_data.py
+* load_model.py
 
 ## Technologies
 * Python 
