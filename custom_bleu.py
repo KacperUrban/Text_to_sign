@@ -4,25 +4,48 @@ from transformers import pipeline
 import pandas as pd
 from typing import Tuple
 from datasets import DatasetDict
+import numpy as np
 
 
 class CustomBleu:
+    """_summary_
+    """
     def __init__(self, data:DataFrame, translator:pipeline) -> None:
+        """_summary_
+
+        Args:
+            data (DataFrame): _description_
+            translator (pipeline): _description_
+        """
         self.data = data
         self.translator = translator
 
     def prepare_label_to_bleu(self) -> dict:
+        """_summary_
+
+        Returns:
+            dict: _description_
+        """
         hashmap = {}
-        for i in range(0, self.data.shape[0]):
-            if self.data.iloc[i, 0] in hashmap:
-                hashmap[self.data.iloc[i, 0]] = hashmap[self.data.iloc[i, 0]].append(
-                    self.data.iloc[i, 1]
-                )
+        for index, row in self.data.iterrows():
+            polish_sentence = row['pl']
+            sign_language_sentence = row['mig']
+            
+            if polish_sentence in hashmap:
+                hashmap[polish_sentence].append(sign_language_sentence)
             else:
-                hashmap[self.data.iloc[i, 0]] = [self.data.iloc[i, 1]]
+                hashmap[polish_sentence] = [sign_language_sentence]
         return hashmap
 
     def score(self, dataset:DatasetDict) -> Tuple[float, DataFrame]:
+        """_summary_
+
+        Args:
+            dataset (DatasetDict): _description_
+
+        Returns:
+            Tuple[float, DataFrame]: _description_
+        """
         ref_sent = self.prepare_label_to_bleu()
         translation_corpus = []
         reference_corpus = []
@@ -38,4 +61,4 @@ class CustomBleu:
         compare_ref_trans = pd.DataFrame(
             {"reference": reference_corpus, "translation": translation_corpus}
         )
-        return b_score, compare_ref_trans
+        return np.round(b_score,2), compare_ref_trans
