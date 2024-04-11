@@ -1,0 +1,484 @@
+pl,mig
+Trzeba wezwać pogotowie., POGOTOWIE WEZWAĆ
+Który to szpital., SZPITAL GDZIE
+Który to szpital., SZPITAL KTÓRY
+Który to szpital., SZPITAL JAKI
+Ten człowiek jest nieprzytomny., CZŁOWIEK NIEPRZYTOMNY
+Czy ta pani była przytomna?, TA KOBIETA PRZYTOMNA BYŁO
+Czy ta pani była przytomna?, TA PANI PRZYTOMNA BYŁO
+Ja mam kroplówkę., JA KROPLÓWKA
+Trzeba zrobić opatrunek., OPATRUNEK MUSI
+Na ulicy była krew., ULICA KREW BYŁO
+Trzeba jechać do szpitala., SZPITAL JECHAĆ
+Na jakiej ulicy jest apteka?, APTEKA GDZIE
+Na jakiej ulicy jest apteka?, APTEKA ULICA JAKA
+Czy pani ma konto w banku?, TY KONTO BANK MASZ
+Czy pan ma konto w banku?, TY KONTO BANK MASZ
+Czy pani ma konto w banku?, Pani KONTO BANK MASZ
+Czy pan ma konto w banku?, Pan KONTO BANK MASZ
+Trzeba zwrócić kredyt do banku., BANK RATA ZWROT MUSI
+Kiedy będzie wypłacona pożyczka?, POŻYCZKA WYPŁATA KIEDY
+To jest ostatnia rata., RATA OSTATNIA
+Czy otrzymałaś zawiadomienie z banku?, TY BANK ZAWIADOMIENIE BYŁO
+Ja otrzymuję wypłatę na konto w banku., JA KONTO WYPŁATA
+Raty trzeba płacić systematycznie., RATA SYSTEMATYCZNE PŁACIĆ MUSIEĆ
+Ja potrzebuję wziąć pożyczkę., JA POŻYCZKA POTRZEBA
+Koniec ze spłatami rat., RATA KONIEC
+Proszę odpowiedzieć na pytanie., PROSIĆ JA PYTAĆ TY Odpowiedź
+Proszę migać powoli., JA PROSIĆ TY MIGAĆ POWOLI
+Proszę mówić powoli., JA PROSIĆ TY MÓWIĆ POWOLI
+Czy jest tłumacz języka migowego?, TŁUMACZ MIGAĆ JEST
+Proszę odpowiedzieć na pytanie., JA PYTAĆ TY ODPOWIEDŹ PROSIĆ
+Ja umiem dobrze migać., JA MIGAĆ DOBRZE
+Ja ciebie nie zrozumiałem., JA NIE ROZUMIEĆ CIEBIE TY POWTÓRZYĆ
+Czy ma pani rodzinę?, TY RODZINA masz
+Czy ma pan rodzinę?, TY RODZINA masz
+Czy ma pani rodzinę?, PANI RODZINA masz
+Czy ma pan rodzinę?, PAN RODZINA masz
+Czy twoja rodzina ma niebieską kartę?, TWOJA RODZINA NIEBESKA KARTA
+Czy pan jest kawalerem?, TY KAWALER
+Czy pan jest kawalerem?, PAN KAWALER
+Czy pani jest panną?, TY PANNA
+Czy pani jest panną?, PANI PANNA
+Czy ma pani krewnych?, TY KREWNI MASZ
+Czy ma pan krewnych?, TY KREWNI MASZ
+Czy ma pani krewnych?, PANI KREWNI MASZ
+Czy ma pan krewnych?, PAN KREWNI MASZ
+Ja jestem rozwódką., JA ROZWÓD BYŁO
+Mój dziadek zmarł 5 lat temu., MÓJ DZIADEK ZMARŁ 5 LAT DAWNO
+Czy ma pani dzieci?, TY DZIECI MASZ
+Czy ma pan dzieci?, TY DZIECI MASZ
+Czy ma pani dzieci?, PANI DZIECI MASZ
+Czy ma pan dzieci?, PAN DZIECI MASZ
+Moja babcia żyje., MOJA BABCIA ŻYCIE
+Moja babcia żyje., MOJA BABCIA ŻYJE
+Mąż pracuje na policji., MÓJ MĄŻ PRACA POLICJA
+Siostra chodzi na kurs prawa jazdy., SIOSTRA KURS PRAWA JAZDY CHODZIĆ
+Gdzie pracuje pana żona?, TWOJA ŻONA PRACA GDZIE
+Gdzie pracuje pana żona?, PANA ŻONA PRACA GDZIE
+Mój tata pracuje w szpitalu., MÓJ TATA PRACA SZPITAL
+Moja mama jest pielęgniarką., MOJA MAMA PIELĘGNIARKA
+Ja mam brata i dwie siostry., JA JEDEN BRAT DWIE SIOSTRY
+Jaki to znak?, TO ZNAK JAKI
+Mam syna i dwie córki., JA JEDEN SYN DWIE CÓRKI
+Był wypadek ale wszyscy żyją., WYPADEK BYŁO LUDZIE ŻYĆ WSZYSTKO
+Trzeba odwiedzać chorych w szpitalu., SZPITAL CHORY ODWIEDZAĆ trzeba
+Czy pani jest ranna?, TY RANNA
+Czy pan jest ranny?, TY RANNA
+Czy pani jest ranna?, PANI RANNA
+Czy pan jest ranny?, PAN RANNA
+Ja czekam na tego pana., JA CZEKAĆ PAN TEN
+Co się stało?, CO STAŁO
+Co się stało?, CO WYDARZYŁO
+Czy pani widziała wypadek?, TY WYPADEK WIDZIEĆ BYŁO
+Czy pani widziała wypadek?, PANI WYPADEK WIDZIEĆ BYŁO
+Czy te dokumenty są ważne?, TE DOKUMENTY WAŻNE BYĆ
+To jest ważna sprawa., TO SPRAWA WAŻNA BYĆ
+Czy pan był świadkiem wypadku?, TY WYPADEK WIDZIEĆ BYŁO
+Czy pan był świadkiem wypadku?, TY ŚWIADEK BYŁO
+Czy pani pamięta co się stało?, TY PAMIĘTAĆ WYDARZYŁO BYŁO
+Czy pan pamięta co się stało?, TY PAMIĘTAĆ WYDARZYŁO BYŁO
+Czy pani pamięta co się stało?, PANI PAMIĘTAĆ WYDARZYŁO BYŁO
+Czy pan pamięta co się stało?, PAN PAMIĘTAĆ WYDARZYŁO BYŁO
+Dzisiaj widziałam wypadek na ulicy., DZISIAJ JA WYPADEK ULICA WIDZIEĆ
+Ja nie pamiętam co się stało., JA ZAPOMNIEĆ WYDARZYĆ
+Kiedy pani może przyjść?, TY KIEDY PRZYJŚĆ
+Kiedy pani może przyjść?, PANI KIEDY PRZYJŚĆ
+Ten człowiek ma aparat słuchowy., ON APARAT SŁUCHOWY MA
+Ja jestem zdrowa., JA ZDROWA
+Ja jestem chory., JA CHORY
+Ten aparat słuchowy jest zepsuty., TEN APARAT SŁUCHOWY ZEPSUTY
+Proszę się położyć., TY LEŻEĆ
+Jak się pani czuje?, TY CZUĆ JAK
+Jak się pan czuje?, TY CZUĆ JAK
+Jak się pani czuje?, PANI CZUĆ JAK
+Jak się pan czuje?, PAN CZUĆ JAK
+Czy był pan świadkiem wypadku?, TY ŚWIADEK WYPADEK BYŁO
+Czy był pan świadkiem wypadku?, PAN ŚWIADEK WYPADEK BYŁO
+Ten człowiek zmarł., TEN CZŁOWIEK ZMARŁ
+Na jakiej ulicy jest urząd gminy?, URZĄD GMINA ULICA JAKA
+Ja pracuję w urzędzie powiatowym., JA PRACA URZĄD POWIATOWY
+Ja idę do pracy w MOPS., JA PRACA MOPS IŚĆ
+Gdzie jest Zakład Ubezpieczeń Społecznych?, ZUS GDZIE
+Ja mam rentę ZUS., JA RENTA ZUS mieć
+Czy w Rzeszowie jest Starostwo Powiatowe?, STAROSTWO POWIATOWE RZESZÓW BYĆ
+Jaki to jest powiat?, TO POWIAT JAKI
+To jest województwo podkarpackie., TO WOJEWÓDZTWO PODKARPACKIE
+Czy ja mam płacić grzywnę?, JA GRZYWNA PŁACIĆ JAK
+Kiedy była interwencja policji?, POLICJA INTERWENCJA KIEDY BYŁO
+Ja lubię oglądać telewizję., JA TELEWIZJA OGLĄDAĆ LUBIĆ
+Do głuchych trzeba pisać SMS., DLA GŁUSI SMS PISAĆ
+Czy to jest pani telefon?, TWÓJ PANI TELEFON
+Czy to jest pana telefon?, TWÓJ PANA TELEFON
+Czy widziałaś marsz w telewizji?,TY TELEWIZJA MARSZ OGLĄDAĆ BYŁO
+Proszę napisać adres e-mail., TY E-MAIL JAKI TY PISAĆ TU
+Ta niebezpieczna osoba była aresztowana., OSOBA ARESZT BYŁO ONA NIEBEZPIECZNA
+Czy osoba głucha może pracować w ochronie?, GŁUCHY PRACA OCHRONA MOŻNA
+Gdzie jest biuro dyrektora?, DYREKTOR BIURO GDZIE
+Czy to Jest budynek policji?, TO POLICJA BUDYNEK
+Działania policji są ważne., POLICJA WAŻNY DZIAŁAĆ
+O której godzinie będzie inspektor?, GODZINA INSPEKTOR KIEDY
+To Jest pokój dla kierowników., KIEROWNIK POKÓJ TU
+Co to jest praca odpowiedzialna, PRACA ODPOWIEDZIALNOŚĆ JAK WYGLĄDA
+Czy inspektor pracuje w tym biurze?, INSPEKTOR PRACA BIURO GDZIE
+Jakie działania ma policja?, POLICJA DZIAŁANIE JAK WYGLĄDA
+Jakie działania ma policja?, POLICJA PRACA JAK WYGLĄDA
+Trzeba uważać na drodze., DROGA UWAGA
+Mój samochód jest zepsuty., MÓJ SAMOCHÓD ZESPUTY
+Dlaczego pani kłamie?, TY KŁAMAĆ DLACZEGO
+Dlaczego pan kłamie?, TY KŁAMAĆ DLACZEGO
+Dlaczego pani kłamie?, PANI KŁAMAĆ DLACZEGO
+Dlaczego pan kłamie?, PAN KŁAMAĆ DLACZEGO
+Ja pani pomogę., JA POMAGAĆ TOBIE
+Ja panu pomogę., JA POMAGAĆ TOBIE
+Ja pani pomogę., JA POMAGAĆ PANI
+Ja panu pomogę., JA POMAGAĆ PANU
+Czy pani ma duże mieszkanie?, TY MIESZKANIE DUŻE MASZ
+Czy pan ma duże mieszkanie?, TY MIESZKANIE DUŻE MASZ
+Czy pani ma duże mieszkanie?, PANI MIESZKANIE DUŻE MASZ
+Czy pan ma duże mieszkanie?, PAN MIESZKANIE DUŻE MASZ
+Ja mam zasiłek stały., JA ZASIŁEK STAŁE MAM
+Ja mam rentę okresową., JA RENTA OKRESOWY
+Czy mogę otrzymać pomoc/zapomogę?, JA POMOC MOŻNA
+Czy mogę otrzymać pomoc/zapomogę?, JA ZAPOMOGA MOŻNA
+Ja mało zarabiam i chcę mieć zasiłek., JA ZAROBEK MAŁO ZASIŁEK CHCIEĆ
+Ja dużo zarabiam., JA ZAROBEK DUŻO
+Kiedy oddadzą moje dokumenty?, MOJE DOKUMENTY ZWROT KIEDY
+Znalazłam dowód osobisty., JA DOWÓD OSOBISTY ZNALAZŁAM
+Ja szukam pracy., JA PRACA SZUKAĆ
+Skradziono mi paszport., MÓJ PASZPORT KRADZIEŻ
+To jest zaświadczenie o zarobkach., TO ZAŚWIADCZENIE ZAROBKI
+Kiedy można odebrać paszport?, JA PASZPORT ODBIÓR KIEDY
+Ja zgubiłam dowód osobisty i paszport., JA DOWÓD PASZPORT ZGUBIĆ
+Proszę dać mi dowód., TY DOWÓD DAĆ
+Ja poszukam dokumenty w domu., JA DOKUMENTY DOM SZUKAĆ
+Proszę przyjechać dzisiaj do pracy., TY PRACA DZISIAJ PRZYJECHAĆ
+Na tej ulicy jest niebezpiecznie., TU ULICA NIEBEZPIECZNIE
+O której godzinie było włamanie?, WŁAMAĆ GODZINA KTÓRA BYŁO
+Jaka dzisiaj jest pogoda?, POGODA DZISIAJ JAKA
+Proszę siedzieć spokojnie., TY SPOKÓJ SIEDŹ
+Ja nie lubię deszczu., DESZCZ PADAĆ JA NIE LUBIĆ
+Gdzie jest wyjście?, DRZWI WYJŚCIE GDZIE
+To jest wyjazd turystyczny., JA TURYSTA JECHAĆ
+Tu jest nakaz skrętu w prawo., TU NAKAZ JAZDA PRAWO
+Sprawdź czy masz prawo jazdy., TY PRAWO JAZDY MASZ SPRAWDZAĆ
+Trzeba jechać tą drogą pod górę., TY DROGA GÓRA JECHAĆ
+W którym kierunku trzeba jechać na policję?, POLICJA GDZIE DROGA JECHAĆ JAK
+To jest niebezpieczny zakręt., DROGA ZAKRĘT UWAGA NIE- BEZPIECZNIE
+Jutro mam egzamin na prawo Jazdy., JUTRO JA PRAWO JAZDY EGZAMIN BĘDZIE
+Lubię turystykę górską., JA GÓRY TURYSTA LUBIĆ
+Czy tu można skręcić w lewo?, TU ZAKRĘT LEWO MOŻNA
+Czy tu można skręcić w lewo?, TU ZAKRĘT LEWO WOLNO
+Muszę sprawdzić nowe przepisy., JA PRZEPISY NOWE CZYTAĆ SPRAWDZIĆ
+To ubezpieczenie Jest nieważne., TO UBEZPIECZENIE NIE WAŻNE
+Gdzie jest parking?, PARKING GDZIE
+Ja czekam na pociąg., JA POCIĄG CZEKAĆ
+Ja mam samochód., JA SAMOCHÓD MIEĆ
+To jest moja tablica rejestracyjna., TO MOJA TABLICA REJESTRACYJNA
+Skradziono mój rower., MÓJ ROWER KRADZIEŻ BYŁO
+W samochodzie był kierowca i 3 pasażerów., SAMOCHÓD KIEROWCA 3 P A S A Ż E R BYŁO
+Pan jechał bez biletu., TEN PAN JECHAĆ BILET NIE MA
+Samochód nie ma ważnego ubezpieczenia., SAMOCHÓD UBEZPIECZENIE WAŻNE NIE MA
+Dlaczego pani nie chce jeść?, TY JEŚĆ NIE CHCIEĆ DLACZEGO
+Dlaczego pan nie chce jeść?, TY JEŚĆ NIE CHCIEĆ DLACZEGO
+Dlaczego pani nie chce jeść?, PANI JEŚĆ NIE CHCIEĆ DLACZEGO
+Dlaczego pan nie chce jeść?, PAN JEŚĆ NIE CHCIEĆ DLACZEGO
+W szkole trzeba się uczyć., SZKOŁA UCZYĆ TRZEBA
+Proszę się zapytać osobiście., TY ZAPYTAĆ
+To jest szkolny obowiązek., SZKOŁA OBOWIĄZEK
+Czy ty dobrze się uczyłeś w szkole?, TY SZKOŁA NAUKA DOBRZE BYŁO
+To są dobrzy ludzie., LUDZIE DOBRZE
+To jest dobry człowiek., TEN CZŁOWIEK DOBRY
+Kto to Jest?, TO KTO
+Jaka jest dzisiaj data?, DATA DZISIAJ JAKA
+Ja tutaj mieszkam., JA MIESZKAĆ TUTAJ
+Ja tutaj mieszkam., JA MIESZKAĆ TU
+W jakim roku?, ROK JAKI
+Jaki dzisiaj jest dzień?, DZIEŃ dzisiaj JAKI
+Co to jest?, CO TO JEST
+Dzień dobry pani., DZIEŃ DOBRY
+Dzień dobry panu., DZIEŃ DOBRY
+Jak się pani nazywa?, TY NAZWISKO
+Jak się pan nazywa?, TY NAZWISKO
+Jak się pani nazywa?, PANI NAZWISKO
+Jak się pan nazywa?, PAN NAZWISKO
+Ja nazywam się., JA NAZWISKO
+Czy pani mnie dobrze widzi?, TY DOBRZE WIDZI.
+Czy pani mnie dobrze widzi?, PANI DOBRZE WIDZI.
+Ja ciebie widzę., JA WIDZIEĆ CIEBIE
+Która jest godzina?, GODZINA KTÓRA
+Ja nie mam zegarka., JA ZEGAREK NIE MIEĆ
+Czy masz komputer w domu?, TY KOMPUTER DOM MIEĆ
+Ja mam Internet., JA INTERNET MIEĆ
+Jutro mam spotkanie w zakładzie pracy., JUTRO SPOTKANIE ZAKŁAD PRACY BĘDZIE
+Jak nazywa się Prezydent Polski?, PREZYDENT POLSKA NAZWISKO
+Posłowie pracują dla kraju., POSEŁ PRACA DLA KRAJ
+Kto będzie burmistrzem?, BURMISTRZ KTO BĘDZIĘ
+W sejmie jest 460 posłów., SEJM 460 POSEŁ
+Dzisiaj mam rozmowę z prezesem., JA DZIŚ PREZES ROZMOWA
+Czy ten pan jest marszałkiem?, TEN PAN MARSZAŁEK
+Jakie są obowiązki premiera?, PREMIER PRACA JAK WYGLĄDA
+Gdzie mieszka wójt gminy?, WÓJT GMINA MIESZKAĆ GDZIE
+Gdzie pracuje sejm i senat?, SEJM SENAT PRACA GDZIE
+To są drzwi wejściowe., TO DRZWI WEJŚCIE
+Włamano się do mojego domu., MÓJ DOM WŁAMANIE BYŁO
+W mieszkaniu Jest bezpiecznie., MIESZKANIE BEZPIECZNIE jest
+Ja nie palę papierosów., JA PAPIEROSY NIE PALĘ
+Czy ty masz narkotyki w domu?, TY NARKOTYKI DOM masz
+Policja skierowała pana na badanie krwi., TY BADANIE KRWI POLICJA SKIEROWANIE
+Policja skierowała pana na badanie krwi., PAN BADANIE KRWI POLICJA SKIEROWANIE
+Na tej ulicy jest fotoradar., TA ULICA FOTORADAR
+Trzeba zrobić opatrunek., OPATRUNEK MUSI
+Ma pan 2 promile alkoholu we krwi., TY KREW PROMILE mieć
+Ma pani 2 promile alkoholu we krwi., TY KREW PROMILE mieć
+Ma pan 2 promile alkoholu we krwi., PAN KREW PROMILE mieć
+Ma pani 2 promile alkoholu we krwi., PANI KREW PROMILE mieć
+Lekarz jest na dyżurze., LEKARZ DYŻUR
+Proszę dmuchać w alkomat., ALKOMAT DMUCHAĆ
+Musimy pobrać krew., KREW POBRANIE BĘDZIE
+Zbada pana lekarz., LEKARZ BADANIE BĘDZIE
+Czy ten pan był wysoki?, PAN WYSOKI
+Ja na pewno byłam w domu., JA DOM NA PEWNO BYŁO
+Tu jest bezpiecznie., TU BEZPIECZNIE
+Ja jestem chuda., JA CHUDA jest
+Tak ja pracuję., TAK JA PRACA
+Pani jest młoda., TY MŁODA jest
+Pani jest młoda., PANI MŁODA jest
+Czy pani umie mówić?, TY MÓWIĆ UMIEĆ
+Czy pan umie mówić?, TY MÓWIĆ UMIEĆ
+Czy pani umie mówić?, PANI MÓWIĆ UMIEĆ
+Czy pan umie mówić?, PAN MÓWIĆ UMIEĆ
+Czy ty możesz mówić?, TY MÓWIĆ MOŻNA
+Czy pani umie migać?, TY MIGAĆ UMIEĆ
+Czy pan umie migać?, TY MIGAĆ UMIEĆ
+Czy pani umie migać?, PANI MIGAĆ UMIEĆ
+Czy pan umie migać?, PAN MIGAĆ UMIEĆ
+Czy pani rozumie co ja migam?, JA MIGAM TY ROZUMEĆ
+Czy pan rozumie co ja migam?, JA MIGAM TY ROZUMEĆ
+Czy pani rozumie co ja migam?, JA MIGAM PANI ROZUMEĆ
+Czy pan rozumie co ja migam?, JA MIGAM PAN ROZUMEĆ
+Czy możesz powtórzyć nazwisko?, TY NAZWISKO POWTÓRZYĆ MOŻNA
+Ja nie umiem migać., JA MIGAĆ NIE UMIEĆ
+Ja nie rozumiem co ty do mnie migasz., JA NIE ROZUMIEĆ CIEBIE
+Jak ta pani nazywa się?, TA PANI NAZWISKO JAK
+Jak ten pan nazywa się?, TEN PAN NAZWISKO JAK
+Ja nie mogę powiedzieć nazwiska tej pani., JA NIE POWIEDZIEĆ NAZWISKO PANI
+Ja nie mogę powiedzieć nazwiska tej pani., JA NIE POWIEDZIEĆ NAZWISKO ONA
+Ja nie mogę powiedzieć nazwiska tej pani., JA NIE POWIEDZIEĆ NAZWISKO JEJ
+Ja mogę mówić i migać., JA MÓWIĆ MIGAĆ MOŻNA
+Dobry wieczór czy możemy porozmawiać,. DOBRY WIECZÓR JA ROZMAWIAĆ MOŻNA
+Jakie pani ma obywatelstwo?, TY OBYWATELSTWO JAKIE
+Jakie pan ma obywatelstwo?, TY OBYWATELSTWO JAKIE
+Jakie pani ma obywatelstwo?, PANI OBYWATELSTWO JAKIE
+Jakie pan ma obywatelstwo?, PAN OBYWATELSTWO JAKIE
+Ja mam obywatelstwo polskie., JA POLSKA OBYWATEL
+Ja mieszkam w mieście., JA MIESZKAĆ MIASTO
+Ja pracuję na wsi., JA PRACA WIEŚ
+To jest godło Polski., TO GODŁO POLSKA
+Jakiej pani jest narodowości?, TY POLSKA OBYWATELSTWO JAKIE
+Jakiej pani jest narodowości?, PANI POLSKA OBYWATELSTWO JAKIE
+To jest polska flaga., TO FLAGA POLSKA
+Gdzie państwo mieszkacie?, PAŃSTWO MIESZKAĆ GDZIE
+W moim motorze zepsuł się silnik., MÓJ MOTOR SILNIK ZEPSUTY
+Czy masz kamizelkę odblaskową?, TY KAMIZELKA RATUNKOWA masz
+Czy ma pani gaśnicę?, TY GAŚNICA mieć
+Czy ma pan gaśnicę?, TY GAŚNICA mieć
+Czy ma pani gaśnicę?, TY PANI GAŚNICA mieć
+Czy ma pan gaśnicę?, TY PAN GAŚNICA mieć
+Te opony są łyse., TE OPONY ŁYSE
+Tutaj nie wolno wyprzedzać., TU WYPRZEDZAĆ NIE WOLNO
+Samochód wjechał na słup., SAMOCHÓD SŁUP UDERZYĆ BYŁO
+Proszę pokazać prawo jazdy., TY PRAWO JAZDY dać
+Idę na kurs prawa Jazdy., JA PRAWO JAZDY KURS
+Wszystkie osoby głuche jechały w tym samochodzie., SAMOCHÓD GŁUCHY WSZYSCY JECHAĆ
+W moim domu była awantura., MÓJ DOM AWANTURA BYŁO
+Pan musi zapłacić mandat 100 zł., TY MANDAT 100 ZŁ PŁACIĆ
+Pan musi zapłacić mandat 100 zł., PAN MANDAT 100 ZŁ PŁACIĆ
+Czy masz skierowanie?, TY SKIEROWANIE MASZ
+Czy tu można pić alkohol?, ALKOHOL PIĆ TU MOŻNA
+Ten pan miał kłopoty z prawem., TEN PRAWO KŁOPOT BYŁO
+Ten pan miał kłopoty z prawem., PAN PRAWO KŁOPOT BYŁO
+Ten pan miał kłopoty z prawem., TEN POLICJA KŁOPOT BYŁO
+Ten pan miał kłopoty z prawem., PAN POLICJA KŁOPOT BYŁO
+Ten pan jest agresywny., PAN AGRESJA
+Czy ty Jesteś trzeźwy?, TY TRZEŹWY
+Jak będziesz agresywny to założymy ci kajdanki., TY AGRESJA KAJDANKI BĘDZIE
+Dopalacze i alkohol są niebezpieczne., DOPALACZE ALKOHOL NIEBEZPIECZNE
+Ty masz problemy z alkoholem., TY ALKOHOL PROBLEM MASZ
+Czy jutro jest poniedziałek?, JUTRO PONIEDZIAŁEK
+We wtorek mam badanie krwi., WTOREK JA KREW BADANIE
+W środę ja nie pracuję, ŚRODA JA PRACA NIE BĘDZIE
+W środę ja nie pracuję, ŚRODA JA PRACA NIE PRACUJE
+W czwartek miałem kontrolę policji., CZWARTEK JA POLICJA KONTROLA BYŁO
+Co ty robisz w piątek?, PIĄTEK TY CO ROBIĆ
+W sobotę mam urodziny., SOBOTA JA URODZINY
+Niedziela to dzień wolny od pracy., NIEDZIELA PRACA WOLNY
+Zapomniałam o kierunkowskazie., JA KIERUNKOWSKAZ ZAPOMINAĆ
+Pamiętaj włączyć światła., TY ŚWIATŁA WŁĄCZYĆ pamiętać
+Proszę pokazać trójkąt ostrzegawczy., TY TRÓJKĄT KĄT OSTRZEGAWCZY DAĆ
+Nie wolno przejeżdżać na czerwonym świetle., CZERWONE ŚWIATŁO JECHAĆ NIE MOŻNA
+Światła są zepsute., ŚWIATŁO ZEPSUTE
+Trzeba włączyć światła., ŚWIATŁA WŁĄCZYĆ
+Proszę przeczytać protokół., TY PROTOKÓŁ CZYTAĆ
+To jest niebieska karta., TO NIEBIESKA KARTA
+Proszę pokazać dowód rejestracyjny., TY DOWÓD REJESTRACYJNY POKAZAĆ
+Kto panią uderzył?, PANI UDERZYĆ KTO
+Kto pana uderzył?, PAN UDERZYĆ KTO
+Proszę wsiąść do radiowozu., TY RADIOWÓZ WSIADAĆ
+Proszę otworzyć bagażnik., BAGAŻNIK OTWIERAĆ
+Można zamknąć bagażnik., BAGAŻNIK MOŻNA ZAMYKAĆ
+Skradziono mi torebkę., MOJA TOREBKA KRADZIEŻ BYŁO
+Proszę wsiąść do samochodu., TY SAMOCHÓD WSIADAĆ
+Na drodze jest duży ruch., DROGA SAMOCHÓD DUŻO
+Kiedy jest święto policji?, POLICJA ŚWIĘTO KIEDY TERMIN
+Jezdnie są śliskie., DROGA ŚLISKO
+Jutro będzie ładna pogoda., JUTRO POGODA ŁADNA
+Jaki masz termin sprawy na policji., POLICJA SPRAWA TERMIN JAKI
+Wypadek był tydzień temu., WYPADEK TYDZIEŃ TEMU
+Jaki masz termin egzaminu na prawo jazdy?, TY PRAWO JAZDY EGZAMIN KIEDY
+Trzeba przestrzegać przepisów prawa., PRAWO PRZEPISY PRZESTRZEGAĆ TRZEBA
+Mam sprawę w sądzie., JA SPRAWA SĄD BĘDZIE
+Pan otrzymał naganę w pracy., TY PRACA NAGANA BYŁO
+Pan otrzymał naganę w pracy., PAN PRACA NAGANA BYŁO
+To są dwie osobne sprawy., SPRAWA 2 OSOBNA
+Czy kara będzie wysoka?, KARA JAKA
+Czy znasz przepisy ustawy?, TY USTAWA przepisy WIEDZIEĆ
+Policja użyła kajdanek., POLICJA KAJDANKI BYŁO
+Czy hamulec i sprzęgło są dobre?, HAMULEC SPRZĘGŁO DOBRE
+Czy hamulec i sprzęgło są sprawne?, HAMULEC SPRZĘGŁO DOBRE
+Mój samochód jeździ na gaz., MÓJ SAMOCHÓD GAZ
+Proszę używać pasów bezpieczeństwa., TY PASY BEZPIECZEŃSTWA
+Ja mam 15 punktów karnych., JA PUNKTY KARNE 15
+Ja mam 4 punktów karnych., JA PUNKTY KARNE 4
+Ja mam 20 punktów karnych., JA PUNKTY KARNE 20
+Czy zmieniły się przepisy drogowe?, PRZEPISY JAZDA ZMIANA BYŁO
+Ile można mieć punktów karnych?, PUNKTY KARNE ILE
+Ile trzeba zapłacić za paliwo?, PALIWO PŁACIĆ ILE
+Policja kontrolowała kierowców., POLICJA KIEROWCY KONTROLA BYŁO
+Ja uczę się przepisów systematycznie., JA PRZEPISY NAUKA systematycznie
+Czy masz klucze do domu?, TY KLUCZ DOM MASZ
+W zakładzie pracy była kontrola., ZAKŁAD PRACA KONTROLA BYŁA
+Ja lubię pracować na komputerze., JA PRACA KOMPUTER LUBIĆ
+Czy ma pani dokumenty?, TY DOKUMENTY MIEĆ
+Czy ma pan dokumenty?, TY DOKUMENTY MIEĆ
+Czy ma pani dokumenty?, PANI DOKUMENTY MIEĆ
+Czy ma pan dokumenty?, PAN DOKUMENTY MIEĆ
+Proszę podpisać oświadczenie., TY OŚWIADCZENIE PODPISAĆ
+Proszę podpisać oświadczenie., TY OŚWIADCZENIE PODPISAĆ
+Proszę podpisać oświadczenie., PANI OŚWIADCZENIE PODPISAĆ
+Proszę podpisać oświadczenie., PAN OŚWIADCZENIE PODPISAĆ
+Proszę podpisać oświadczenie., TY OŚWIADCZENIE PODPIS
+Proszę podpisać oświadczenie., TY OŚWIADCZENIE PODPIS
+Proszę podpisać oświadczenie., PANI OŚWIADCZENIE PODPIS
+Proszę podpisać oświadczenie., PAN OŚWIADCZENIE PODPIS
+Proszę napisać datę urodzenia., TY DATA URODZENIA PISAĆ
+Proszę napisać datę urodzenia., TY DATA URODZENIA PISAĆ
+Proszę napisać datę urodzenia., PANI DATA URODZENIA PISAĆ
+Proszę napisać datę urodzenia., PAN DATA URODZENIA PISAĆ
+Proszę odpowiedzieć na moje pytanie., TY ODPOWIEDŹ DO MNIE
+Proszę odpowiedzieć na moje pytanie., TY ODPOWIEDŹ DO MNIE
+Proszę odpowiedzieć na moje pytanie., PANI ODPOWIEDŹ DO MNIE
+Proszę odpowiedzieć na moje pytanie., PAN ODPOWIEDŹ DO MNIE
+Ja nie mam dokumentów., JA DOKUMENTY NIE MIEĆ
+Gdzie pani pracuje?, TY PRACOWAĆ GDZIE
+Gdzie pan pracuje?, TY PRACOWAĆ GDZIE
+Gdzie pani pracuje?, TY PRACA GDZIE
+Gdzie pan pracuje?, TY PRACA GDZIE
+Gdzie pani pracuje?, PANI PRACOWAĆ GDZIE
+Gdzie pan pracuje?, PAN PRACOWAĆ GDZIE
+Gdzie pani pracuje?, PANI PRACA GDZIE
+Gdzie pan pracuje?, PAN PRACA GDZIE
+Czy pani pracuje?, TY PRACA MIEĆ
+Czy pan pracuje?, TY PRACA MIEĆ
+Czy pani pracuje?, PANI PRACA MIEĆ
+Czy pan pracuje?, PAN PRACA MIEĆ
+Ja pracuję w zakładzie., JA PRACA ZAKŁAD
+Ile pani zarabia?, TY ZARABIAĆ ILE
+Ile pan zarabia?, TY ZARABIAĆ ILE
+Ile pani zarabia?, PANI ZARABIAĆ ILE
+Ile pan zarabia?, PAN ZARABIAĆ ILE
+Ja nie mam pieniędzy., JA PIENIĄDZE NIE MIEĆ
+Ja jestem bezrobotny., JA BEZROBOTNY BYĆ
+Ja jestem bezrobotny., JA PRACA NIE MIEĆ
+Jaki pani ma stały dochód?, TY DOCHÓD ILE
+Jaki pan ma stały dochód?, TY DOCHÓD ILE
+Jaki pani ma stały dochód?, PANI DOCHÓD ILE
+Jaki pan ma stały dochód?, PAN DOCHÓD ILE
+Jaki pani ma zawód?, TY ZAWÓD JAKI
+Jaki pan ma zawód?, TY ZAWÓD JAKI
+Jaki pani ma zawód?, PANI ZAWÓD JAKI
+Jaki pan ma zawód?, PAN ZAWÓD JAKI
+Czy można otworzyć okno?, OKNO OTWORZYĆ MOŻNA
+Tu nie wolno siedzieć., TU SIADAĆ NIE WOLNO
+Tu nie wolno siadać., TU SIADAĆ NIE WOLNO
+Proszę się zatrzymać., TY STOP
+Proszę wstać., TY WSTAĆ
+Proszę usiąść., TY SIADAĆ
+Czy to krzesło jest wolne?, TO KRZESŁO MOŻNA SIADAĆ
+Ja wynajmuję mieszkanie., JA MIESZKANIE WYNAJMOWAĆ
+Proszę zamknąć drzwi., DRZWI ZAMYKAĆ
+Nie wolno otwierać okien., OKNO OTWORZYĆ NIE WOLNO
+Czy pani jest głucha?, TY GŁUCHY
+Czy pan jest głuchy?, TY GŁUCHY
+Czy pani jest głucha?, PANI GŁUCHY
+Czy pan jest głuchy?, PAN GŁUCHY
+Czy pani jest głuchoniema?, TY GŁUCHY
+Czy pan jest głuchoniemy?, TY GŁUCHY
+Czy pani jest głuchoniema?, PANI GŁUCHY
+Czy pan jest głuchoniemy?, PAN GŁUCHY
+Czy pani Jest słysząca?, TY SŁYSZEĆ
+Czy pan Jest słyszący?, TY SŁYSZEĆ
+Czy pani Jest słysząca?, PANI SŁYSZEĆ
+Czy pan Jest słyszący?, PAN SŁYSZEĆ
+Czy pani ma orzeczenie o niepełnosprawności?, TY INWALIDA GRUPA JAK WYGLĄDA
+Czy pan ma orzeczenie o niepełnosprawności?, TY INWALIDA GRUPA JAK WYGLĄDA
+Czy pani ma orzeczenie o niepełnosprawności?, TY ORZECZENIE NIEPEŁNOSPRAWNY MIEĆ
+Czy pan ma orzeczenie o niepełnosprawności?, TY ORZECZENIE NIEPEŁNOSPRAWNY MIEĆ
+Czy pani ma orzeczenie o niepełnosprawności?, PANI ORZECZENIE NIEPEŁNOSPRAWNY MIEĆ
+Czy pan ma orzeczenie o niepełnosprawności?, PAN ORZECZENIE NIEPEŁNOSPRAWNY MIEĆ
+Czy pani umie pisać?, TY PISAĆ UMIEĆ
+Czy pan umie pisać?, TY PISAĆ UMIEĆ
+Czy pani umie pisać?, PANI PISAĆ UMIEĆ
+Czy pan umie pisać?, PAN PISAĆ UMIEĆ
+Czy pani umie czytać?, TY CZYTAĆ UMIEĆ
+Czy pan umie czytać?, TY CZYTAĆ UMIEĆ
+Czy pani umie czytać?, PANI CZYTAĆ UMIEĆ
+Czy pan umie czytać?, PAN CZYTAĆ UMIEĆ
+Proszę się tu podpisać., TY PODPISAĆ TU
+Proszę się tu podpisać., PANI PODPISAĆ TU
+Proszę się tu podpisać., PAN PODPISAĆ TU 
+Czy pan otrzymał wezwanie?, TY WEZWANIE MASZ OTRZYMAĆ
+Czy pani otrzymała wezwanie?, TY WEZWANIE MASZ OTRZYMAĆ
+Czy pan otrzymał wezwanie?, PAN WEZWANIE MASZ OTRZYMAĆ
+Czy pani otrzymała wezwanie?, PANI WEZWANIE MASZ OTRZYMAĆ
+Czy pani przeczytał wezwanie?, TY WEZWANIE CZYTAĆ BYŁO
+Czy pan przeczytał wezwanie?, TY WEZWANIE CZYTAĆ BYŁO
+Czy pani przeczytał wezwanie?, PANI WEZWANIE CZYTAĆ BYŁO
+Czy pan przeczytał wezwanie?, PAN WEZWANIE CZYTAĆ BYŁO
+Ja nie mam orzeczenia o niepełnosprawności., JA ORZECZENIE NIEPEŁNOSPRAWNY NIE MIEĆ
+Czy ma pani dowód osobisty?, TY DOWÓD MIEĆ
+Czy ma pan dowód osobisty?, TY DOWÓD MIEĆ
+Czy ma pani dowód osobisty?, PANI DOWÓD MIEĆ
+Czy ma pan dowód osobisty?, PAN DOWÓD MIEĆ
+Czy ma pani paszport?, TY PASZPORT MIEĆ
+Czy ma pan paszport?, TY PASZPORT MIEĆ
+Czy ma pani paszport?, PANI PASZPORT MIEĆ
+Czy ma pan paszport?, PAN PASZPORT MIEĆ
+Ja mam legitymację., JA LEGITYMACJA MIEĆ
+Ja mam legitymację., JA MIEĆ LEGITYMACJA
+Jaki ma pani numer dowodu osobistego?, TY DOWÓD NUMER JAKI
+Jaki ma pan numer dowodu osobistego?, TY DOWÓD NUMER JAKI
+Jaki ma pani numer dowodu osobistego?, PANI DOWÓD NUMER JAKI
+Jaki ma pan numer dowodu osobistego?, PAN DOWÓD NUMER JAKI
+Jaki ma pani numer domu?, TY DOM NUMER JAKI
+Jaki ma pan numer domu?, TY DOM NUMER JAKI
+Jaki ma pani numer domu?, PANI DOM NUMER JAKI
+Jaki ma pan numer domu?, PAN DOM NUMER JAKI
+Gdzie pani mieszka?, TY MIESZKAĆ GDZIE
+Gdzie pan mieszka?, TY MIESZKAĆ GDZIE
+Gdzie pani mieszka?, PANI MIESZKAĆ GDZIE
+Gdzie pan mieszka?, PAN MIESZKAĆ GDZIE
+Ja mieszkam w Rzeszowie., JA MIESZKAĆ RZESZÓW
+Lubię miasto Rzeszów., JA RZESZÓW LUBIEĆ
+Jaki ma pani adres?, TY ADRES JAKI
+Jaki ma pan adres?, TY ADRES JAKI

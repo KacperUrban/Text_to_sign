@@ -1,0 +1,258 @@
+pl,mig
+Mój dziadek jest inwalidą wojennym i otrzymuję rentę z ZUS., MÓJ DZIADEK INWALIDA WOJNA RENTA ZUS MIEĆ
+Czy ma Pan legitymację kombatancką?, TY LEGITYMACJA KOMBATANT MIEĆ
+Mam wezwanie na komisje lekarską., JA KOMISJA LEKARSKA WEZWANIE MIEĆ
+Moja mama otrzymuje rentę KRUS., MOJA MAMA RENTA KRUS MIEĆ
+Czy ma Pani ukończony kurs rolniczy?, TY KURS ROLNICZY MIEĆ
+Czy ma Pan ukończony kurs rolniczy?, TY KURS ROLNICZY MIEĆ
+Ja pracuję na gospodarstwie rolnym., JA GOSPODARSTWO ROLNE PRACA MIEĆ
+Mój brat jest kawalerem., MÓJ BRAT KAWALER BYĆ
+Ja płacę duży rachunek za gaz i elektryczność., JA GAZ ELEKTRYCZNOSC RACHUNEK DROGO PŁACIĆ
+W jakim sklepie można zrobić tanie zakupy?, SKLEP GDZIE ZAKUPY TANIO
+W jakim sklepie można zrobić tanie zakupy?, SKLEP GDZIE JEST TANIO
+Muszę wysłać faks., JA FAKS MUSIEĆ WYSŁAĆ
+Poproszę o Pani numer telefonu?, JA PROSIĆ TY TELEFON NUMER DAĆ MI
+Poproszę o Pana numer telefonu?, JA PROSIĆ TY TELEFON NUMER DAĆ MI
+Ile to kosztuje?, TO ILE KOSZTOWAĆ
+Czy mogę otrzymać ulgę w opłacie czynszu?, CZYNSZ ULGA MOŻNA
+Ukradli mi wszystkie pieniądze., JA PIENIĄDZE STRATA UKRAŚĆ
+Muszę oszczędzać pieniądze., JA PIENIĄDZE OSZCZĘDZAĆ MUSIEĆ
+Osobie niepełnosprawnej trzeba pomóc wykąpać się., OSOBA NIEPEŁNOSPRAWNA KĄPAĆ POMOC MUSIEĆ
+Dzieci nie lubią myć zębów., DZIECI ZĘBY MYĆ NIE LUBIĆ
+Potrzebuję nową lodówkę i kuchenkę ale są za drogie., JA LODÓWKA KUCHENKA NOWA POTRZEBA ALE DROGO
+Trzeba zrobić remont w pokojach dla dzieci., POKÓJ DZIECI REMONT POTRZEBA ROBIĆ
+Babcia nie może kąpać się w wannie i potrzebny jest prysznic., BABCIA KĄPIEL WANNA NIEMOŻLIWE PRYSZNIC POTRZEBA
+Czy dyrektor MOPS wydał decyzję w mojej sprawie?, DYREKTOR MOPS DECYZJA MOJA SPRAWA JUŻ
+Proszę podpisać to oświadczenie., JA PROSIĆ TY OŚWIADCZENIE PODPIS
+Gdzie można zgłosić przemoc w mojej rodzinie., MOJA RODZINA PRZEMOC POMOC GDZIE ZAŁATWIĆ
+Czy na policji jest tłumacz języka migowego?, POLICJA TŁUMACZ JEST
+Czy Pani mąż jest agresywny?,  TWÓJ MĄŻ AGRESJA BYĆ
+Mąż mnie pobił i byłam hospitalizowana w szpitalu., MĄŻ BIĆ MNIE JA W SZPITAL BYĆ
+Czy sytuacja rodzinna zmieniła się na lepsze?, TWOJA RODZINA TERAZ LEPIEJ BYĆ
+Proszę opowiedzieć co wydarzyło się w Pani rodzinie., TY POWIEDZIEĆ CO WYDARZYŁO TWOJA RODZINA
+Czy ma Pani krewnych lub przyjaciół którzy mogą pomóc?, TY KREWNY PRZYJACIEL POMAGAĆ OTRZYMAĆ UDA
+Czy ma Pani krewnych lub przyjaciół którzy mogą pomóc?, TY KREWNY PRZYJACIEL POMAGAĆ OTRZYMAĆ MOŻNA
+Otrzymałam dofinansowanie na zakup odzieży dla dzieci., ODZIEŻ DZIECI DOFINANSOWANIE OTRZYMAĆ
+Czy w łazience jest ciepła woda?, ŁAZIENKA CIEPŁA WODA JEST
+Czy wyjeżdżacie z dziećmi na urlop., DZIECI URLOP RAZEM WYJAZD
+Mąż jest w sanatorium., MĄŻ JEST SANATORIUM
+Głusi jadą na turnus rehabilitacyjny., GŁUSI TURNUS REHABILITACJA WYJAZD
+Kiedy w tym roku zaczynają się wakacje?, WAKACJE TERAZ KIEDY ZACZYNAĆ
+Mój dom jest stary i zimny., DOM MÓJ STARY ZIMNO JEST
+Rzadko palę papierosy., JA PAPIEROSY PALIĆ RZADKO
+Brakuje mi pieniędzy i nie mogę kupić wszystkich lekarstw., JA LEKARSTWA KUPIĆ NIEMOŻLIWE PIENIĄDZE BRAKOWAC
+Brakuje mi pieniędzy i nie mogę kupić wszystkich lekarstw., JA LEKARSTWA KUPIĆ PIENIĄDZE SKĄD
+Ja mam bezpłatny urlop.,  JA URLOP BEZPŁATNY MIEĆ
+W którym roku była II wojna światowa., WOJNA ŚWIATOWA 2 KIEDY BYŁO
+W którym roku była II wojna światowa., WOJNA ŚWIATOWA 2 KIEDY ROK
+Proszę zawiadomić Opiekę Społeczną o trudnej sytuacji rodzinnej., TY OPIEKA SPOŁECZNA ZGŁOSIĆ RODZINA PROBLEM
+Otrzymałam zasiłek z Pomocy Społecznej., JA ZASIŁEK POMOC SPOŁECZNA OTRZYMAĆ
+Jak długo można otrzymywać zasiłek dla bezrobotnych w Rzeszowie?, ZASIŁEK BEZROBOTNY RZESZÓW JAK DŁUGO MOŻNA
+Na jakiej ulicy jest Zakład Karny?, ZAKŁAD KARNY ULICA NAZWA JAK
+Gdzie jest Pan zameldowany?, TY ZAMELDOWANIE GDZIE
+Co to jest zasiłek opiekuńczy?, ZASIŁEK OPIEKUŃCZY WYTŁUMACZYĆ
+Czy otrzymuje Pani zasiłek opiekuńczy na niepełnosprawne dziecko?, TY ZASIŁEK DZIECKO NIEPEŁNOSPRAWNE OTRZYMYWAĆ
+Osoby głuche nie idą do wojska., GŁUSI WOJSKO NIE MOŻNA
+Czekam na wypis ze szpitala., SZPITAL WYPIS JA CZEKAĆ
+Ja nie mam pracy i potrzebuję zasiłku., JA PRACA NIE MIEĆ JA ZASIŁEK POTRZEBA
+Moje dzieci nie mają kurtek na zimę., MOJE DZIECI KURTEK ZIMA NIE MIEĆ
+Czy MOPS może dofinansować obiady dla moich dzieci w szkole?, MOPS DOFINANSOWANIE OBIAD DZIECI MOJE MOŻNA
+Czy mogę otrzymać dofinansowanie na zakup podręczników i przyborów szkolnych?, KSIĄŻKA SZKOŁA DOFINANSOWANIE MOŻNA
+Jestem chora i proszę o dofinansowanie do zakupu lekarstw., JA CHOROBA DOFINANSOWANIE LEKI MOŻNA
+Jestem chory i proszę o dofinansowanie do zakupu lekarstw., JA CHOROBA DOFINANSOWANIE LEKI MOŻNA
+Jak długo trwa przemoc w rodzinie?, RODZINA PRZEMOC JAK DŁUGO
+Psycholog myśli że sprawa jest bardzo trudna., PSYCHOLOG MYŚLEĆ SPRAWA TRUDNA
+Nasz syn ma kłopoty z narkotykami i dopalaczami., SYN NARKOTYKI DOPALACZE PROBLEM
+Jakie plany i marzenia ma Pani córka?, TWOJA CÓRKA CO MARZENIE
+Jakie plany i marzenia ma Pana córka?, TWOJA CÓRKA CO MARZENIE
+Jakie plany i marzenia ma Pani córka?, TWOJA CÓRKA JAKIE MARZENIE
+Jakie plany i marzenia ma Pana córka?, TWOJA CÓRKA JAKIE MARZENIE
+Czy wiesz jakie są przyczyny agresji?, AGRESJA POWÓD JAK
+Czy wiesz jakie są przyczyny agresji?, AGRESJA POWÓD DLACZEGO
+Proszę przypomnieć sobie co się jeszcze wydarzyło., CO WYDARZYŁO TY PRZYPOMNIJ
+Czy ma Pani zaświadczenie o zarobkach?, TY ZAROBKI ZAŚWIADCZENIE MIEĆ
+Czy ma Pan zaświadczenie o zarobkach?, TY ZAROBKI ZAŚWIADCZENIE MIEĆ
+Gdzie mogę otrzymać dodatek mieszkaniowy?, DODATEK MIESZKANIOWY GDZIE OTRZYMAĆ JAK
+Gdzie mogę otrzymać dodatek mieszkaniowy?, DODATEK MIESZKANIOWY GDZIE ZAŁATWIĆ JAK
+Czy w moim powiecie mogę otrzymać mieszkanie socjalne?, MIESZKANIE SOCJALNE POWIAT JA OTRZYMAĆ MOŻNA
+O której godzinie przyjdzie pracownik socjalny?, PRACOWNIK SOCJALNY KTÓRA GODZINA PRZYJSC
+Ja nie rozumiem wszystkich pytań z ankiety., PYTANIA ANKIETA JA NIE ROZUMIEĆ
+Czy pracownik socjalny umie migać?, PRACOWNIK SOCJALNY MIGAĆ UMIEĆ
+Ja nie umiem dobrze czytać i pisać., JA CZYTAĆ PISAĆ SŁABO
+Ja nie umiem dobrze czytać i pisać., SŁABO CZYTAM PISZĘ
+Dlaczego Pani nie szuka pracy?, TY PRACA NIE MIEĆ DLACZEGO NIE SZUKAĆ PRACY
+Dlaczego Pan nie szuka pracy?, TY PRACA NIE MIEĆ DLACZEGO NIE SZUKAĆ PRACY
+Ja nie chce pracować bo mam rentę., JA MIEĆ RENTA PRACA NIE CHCIEĆ
+Czy Pani ma rodzinę?, TY RODZINA MIEĆ
+Czy Pan ma rodzinę?, TY RODZINA MIEĆ
+Czy Pani ma syna czy córkę?, TY SYN CÓRKA MIEĆ
+Czy Pan ma syna czy córkę?, TY SYN CÓRKA MIEĆ
+Czy Pani ma syna czy córkę?, CZY MASZ SYN CZY CÓRKA
+Czy Pan ma syna czy córkę?, CZY MASZ SYN CZY CÓRKA
+Proszę pokazać legitymację., JA PROSIĆ TY LEGITYMACJA POKAZAĆ
+Czy ma Pani dokumenty?, TY DOKUMENTY MIEĆ
+Czy ma Pan dokumenty?, TY DOKUMENTY MIEĆ
+Proszę czekać na przyjazd rodziny., JA PROSIĆ TY CZEKAĆ TWOJA RODZINA PRZYJECHAĆ
+Kiedy przyjdzie tłumacz języka migowego?, TŁUMACZ MIGAĆ KIEDY PRZYJŚĆ
+Kiedy przyjdzie tłumacz języka migowego?, CZEKAĆ TŁUMACZ PRZYJDZIE
+Proszę powiedzieć czy ma Pani dzieci?, TY DZIECI MIEĆ
+Proszę powiedzieć czy ma Pan dzieci?, TY DZIECI MIEĆ
+Jaki ma Pani numer domu?, TY DOM NUMER JAKI MIEĆ
+Jaki ma Pan numer domu?, TY DOM NUMER JAKI MIEĆ
+Jaki ma Pani numer domu?, JAKI TWÓJ DOM NUMER
+Jaki ma Pan numer domu?, JAKI TWÓJ DOM NUMER
+Czy potrzebuje Pani pomocy?, TY POMAGAĆ POTRZEBA
+Czy potrzebuje Pan pomocy?, TY POMAGAĆ POTRZEBA
+Czy potrzebuje Pani pomocy?, CZY TY POMAGAĆ POTRZEBA
+Czy potrzebuje Pan pomocy?, CZY TY POMAGAĆ POTRZEBA
+Mąż codziennie chodzi do pracy., MĄŻ PRACA CODZIENNIE IŚĆ
+Żona codziennie chodzi do pracy., ŻONA PRACA CODZIENNIE IŚĆ
+Proszę wpisać NIP., TY NIP PISAĆ TU
+Jakie Pani ma obywatelstwo?, TY OBYWATELSTWO JAKIE
+Jakie Pan ma obywatelstwo?, TY OBYWATELSTWO JAKIE
+Moja siostra jest panną., MOJA SIOSTRA PANNA BYĆ
+Proszę przynieść akt małżeństwa., TY AKT MAŁŻEŃSTWO PRZYNIEŚĆ
+Proszę przynieść akt małżeństwa., TY AKT MAŁŻEŃSTWO DAĆ
+Od tej decyzji może Pani odwołać się do sądu w terminie 30 dni., DECYZJA ODWOŁANIE MOŻNA 30 DNI TERMIN
+Od tej decyzji może Pan odwołać się do sądu w terminie 30 dni., DECYZJA ODWOŁANIE MOŻNA 30 DNI TERMIN
+Ja mam orzeczenie o umiarkowanym stopniu niepełnosprawności., JA ORZECZENIE UMIARKOWANY STOPIEŃ MIEĆ
+Proszę o wypis z księgi wieczystej., TY KSIEGA WIECZYSTA WYPIS POTRZEBA MIEĆ
+Proszę o wypis z księgi wieczystej., TY KSIEGA WIECZYSTA WYPIS POTRZEBA DAĆ
+Ten mężczyzna jest niezdolny do pracy., TEN MĘŻCZYZNA PRACA NIEZDOLNY
+Lekarz orzecznik komisji lekarskiej przyjmuje w gabinecie numer 7., LEKARZ KOMISJA POKÓJ 7 PRZYJMOWAĆ
+Moja rodzina jest biedna i potrzebuje pomocy., MOJA RODZINA BIEDA POMOC POTRZEBA
+Czy moje dzieci mogą otrzymać pomoc w nauce?, MOJE DZIECI NAUKA POMOC MOŻNA
+Moja rodzina otrzymała pomoc żywnościową z MOPS-u., MOJA RODZINA POMOC ŻYWNOŚĆ MOPS OTRZYMAC UDAŁO
+Ja nie mogę jeść mięsa., JA MIĘSO JEŚĆ NIE WOLNO
+Dzisiaj nie było wody w domu., CIEPŁA WODA DZIŚ DOM NIE BYŁO
+Dzisiaj nie było wody w domu., MÓJ DOM NIE MA WODY
+Czy zrobić Pani kawę czy herbatę?, TY HERBATA KAWA CHCIEĆ
+Czy zrobić Panu kawę czy herbatę?, TY HERBATA KAWA CHCIEĆ
+Dla dzieci trzeba codziennie gotować obiady., TY OBIAD DZIECI CODZIENNIE GOTOWAĆ
+Czy osoby chore mogą pić kawę?, CHORY KAWA PIĆ MOŻNA
+Na śniadanie trzeba kupić chleb mleko i ser., ŚNIADANIE CHLEB MLEKO SER KUPIĆ TRZEBA
+Dzieci nie mogą pić alkoholu., ALKOHOL DZIECI NIE WOLNO PIĆ
+Na jakiej ulicy jest Miejski Ośrodek Pomocy Społecznej?, MOPS ULICA JAK
+Na jakiej ulicy jest Miejski Ośrodek Pomocy Społecznej?, MOPS ADRES JAK
+Na jakiej ulicy jest Miejski Ośrodek Pomocy Społecznej?, MOPS NUMER JAK
+Na jakiej ulicy jest Miejski Ośrodek Pomocy Społecznej?, MOPS NAZWA JAK
+Na jakiej ulicy jest Miejski Ośrodek Pomocy Społecznej?, MOPS ULICA JAKI NUMER
+Czy ma Pani rentę socjalną?, TY RENTA SOCJALNA MIEĆ
+Czy ma Pan rentę socjalną?, TY RENTA SOCJALNA MIEĆ
+Czy ma Pani rentę socjalną?, CZY TY RENTA SOCJALNA MIEĆ
+Czy ma Pan rentę socjalną?, CZY TY RENTA SOCJALNA MIEĆ
+Jak wyglądają warunki mieszkaniowe Pani rodziny?, TWOJE MIESZKANIE JAK WYGLĄDA
+Jak wyglądają warunki mieszkaniowe Pana rodziny?, TWOJE MIESZKANIE JAK WYGLĄDA
+Jakiej pomocy Pani potrzebuje?, TY POMOC POTRZEBA CO
+Jakiej pomocy Pan potrzebuje?, TY POMOC POTRZEBA CO
+Jakiej pomocy Pani potrzebuje?, CO POTRZEBA POMOC
+Jakiej pomocy Pan potrzebuje?, CO POTRZEBA POMOC
+Jaki jest dochód miesięczny Państwa rodziny?, TY RODZINA ZAROBEK MIESIĄC ILE
+Proszę dokładnie odpowiedzieć na moje pytanie., JA PYTAĆ TY ODPOWIEDŹ DOKŁADNIE
+Proszę dokładnie odpowiedzieć na moje pytanie., PROSZĘ TY MUSIEĆ DOKŁADNIE ODPOWIEDŹ
+Proszę usiąść ponieważ będziemy musieli napisać wywiad., JA PROSIĆ TY SIADAĆ WYWIAD PISAĆ RAZEM MUSIEĆ
+Tu jest rejestracja do lekarza rodzinnego., REJESTRACJA LEKARZ RODZINNY TU
+Czy można pracować i otrzymywać rentę socjalną?, PRACA I RENTA SOCJALNA MOŻNA
+Kiedy będzie sprawa rozwodowa?, ROZWÓD SĄD KIEDY
+Codziennie przychodzi do babci pielęgniarka., PIELĘGNIARKA BABCIA CODZIENNIE PRZYCHODZIĆ
+Wczoraj był pogrzeb mojego dziadka., DZIADEK POGRZEB WCZORAJ BYŁO
+Ja jestem Polakiem., JA POLAK
+Na kurs języka migowego dostałem dofinansowanie z PFRON., JA KURS MIGOWY DOFINANSOWANIE PFRON UDAŁO
+Gdzie jest sekretariat?, SEKRETARIAT GDZIE
+Proszę zostawić dokumenty w biurze., TY DOKUMENTY BIURO ZOSTAWIĆ
+Czy ma Pani zasiłek pielęgnacyjny?, TY ZASIŁEK PIELĘGNACYJNY MIEĆ
+Czy ma Pan zasiłek pielęgnacyjny?, TY ZASIŁEK PIELĘGNACYJNY MIEĆ
+Będzie Pani miała konsultacje i pomoc psychologiczną., TY ROZMOWA POMOC PSYCHOLOG MIEĆ
+Bałam się o moją rodzinę, JA RODZINA MARTWIĆ CO WYDARZYĆ
+Bałam się o moją rodzinę, JA RODZINA BAĆ CO WYDARZYĆ
+Czy było zagrożenie życia i zdrowia?, ZDROWIE ŻYCIE NIEBEZIECZNIE BYĆ CO WYDARZYŁO
+Czy mąż pije alkohol?, TWÓJ MĄŻ ALKOHOL PIĆ
+Czy była wczoraj interwencja policji?, POLICJA WCZORAJ BYĆ POMAGAĆ
+Policja założyła Pani rodzinie Niebieską Kartę., POLICJA NIEBIESKA KARTA TWOJA RODZINA ROBIĆ
+Wczoraj wezwałam policję i pogotowie ponieważ mąż się awanturował i uderzył dziecko., JA POLICJA WCZORAJ WEZWAĆ MĄŻ AWANTURA ROBI
+Dzisiaj w nocy ewakuowano wszystkich mieszkańców bloku nr 2 na naszej ulicy., NOC WSZYSCY BLOK WYJŚĆ
+Dzisiaj w nocy ewakuowano wszystkich mieszkańców bloku nr 2 na naszej ulicy., NOC WSZYSCY BLOK UCIEKAĆ
+Proszę podać datę urodzenia., TY URODZIĆ DATA KIEDY
+Kiedy ma Pani termin porodu?, TY PORÓD TERMIN KIEDY
+Proszę przynieść świadectwo urodzenia córki., TY CÓRKA ŚWIADECTWO URODZIĆ PRZYNIEŚĆ
+Czy zakład pracy ubezpiecza pracowników?, ZAKŁAD UBEZPIECZENIE PRACOWNICY MA
+Jaki jest Pana stan cywilny?, TY KAWALER
+Jaki jest Pani stan cywilny?, TY PANNA
+Jaki jest Pana stan cywilny?,TY WDOWA
+Jaki jest Pani stan cywilny?,TY WDOWIEC
+Kiedy zmarła Twoja babcia?, TWOJA BABCIA ŚMIERĆ KIEDY
+Jak długo są Państwo w separacji?, SEPARACJA WY JAK DŁUGO
+Ja mam skierowanie na komisję ZUS., JA SKIEROWANIE KOMISJA MIEĆ
+Mój tata jest na świadczeniu przedemerytalnym?, MÓJ TATA ŚWIADCZENIE PRZEDEMERYTALNE MIEĆ
+Proszę mi wytłumaczyć co to jest świadczenie rehabilitacyjne., PROSZĘ WYTŁUMACZYĆ ŚWIADCZENIE REHABILITACYJNE
+Dzień dobry Pani proszę usiąść., DZIEŃ DOBRY SIADAĆ PROSIĆ
+Dzień dobry Panu proszę usiąść., DZIEŃ DOBRY SIADAĆ PROSIĆ
+Jak się Pani nazywa?, NAZWISKO TY
+Jak się Pan nazywa?, NAZWISKO TY
+Proszę tu napisać imię i nazwisko., NAZWISKO IMIĘ PISAĆ TU
+Proszę pokazać dowód osobisty., TWÓJ DOWÓD OSOBISTY POKAZAĆ MI
+Jak się Pani czuję?, TY CZUĆ JAK
+Jak się Pan czuję?, TY CZUĆ JAK
+Czy Pani mnie rozumie?, TY ROZUMIEĆ MNIE
+Czy Pan mnie rozumie?, TY ROZUMIEĆ MNIE
+Proszę do mnie migać powoli., JA PROSIĆ TY MIGAĆ POWOLI
+Dziękuję do widzenia., DZIĘKOWAĆ DO WIDZENIA
+Czy mieszka Pani w domu jednorodzinnym?, TY DOM JEDNORODZINNY MIESZKAĆ
+Czy mieszka Pan w domu jednorodzinnym?, TY DOM JEDNORODZINNY MIESZKAĆ
+Proszę pokazać akt zgonu ojca., TWÓJ OJCIEC ŚMIERĆ TY AKT ZGONU POKAZAĆ
+Proszę zrobić badanie audiogramem., AUDIOGRAM TY ZROBIĆ POTRZEBA
+Czy należy mi się emerytura pomostowa?, JA EMERYTURA POMOSTOWA MOŻNA
+Czy należy mi się emerytura pomostowa?, JA EMERYTURA POMOSTOWA UDA
+Ja pracowałam 5 lat za granicą., JA PRACA ZA GRANICĄ 5 LAT
+Mój syn był aresztowany za posiadanie narkotyków., MÓJ SYN NARKOTYKI ARESZT
+Czy mogę starać się o ekwiwalent węglowy na zimę?, JA EKWIWALENT WĘGIEL ZIMA OTRZYMAĆ
+Czy mogę starać się o ekwiwalent węglowy na zimę?, JA EKWIWALENT WĘGIEL ZIMA MOŻNA
+Czy mogę starać się o ekwiwalent węglowy na zimę?, JA EKWIWALENT WĘGIEL ZIMA UDA
+Ta niebezpieczna sytuacja wkrótce się skończy proszę się nie martwić.,TY MARTWIĆ NIE MUSIEĆ KŁOPOT KONIEC BLISKO
+Czy pamiętasz co się stało?, CO WYDARZYŁO TY PAMIĘTAĆ
+Czy pamiętasz co się stało?, CO STAŁO TY PAMIĘTAĆ
+O której godzinie jedzie autobus do miasta?, AUTOBUS MIASTO KTÓRA GODZINA JECHAĆ
+Spotkamy się na przystanku o godzinie 17.00., SPOTKAĆ PRZYSTANEK GODZINA 17.00
+Pociąg przyjedzie za 40 minut., POCIĄG 40 MINUT BĘDZIE
+Idę na pocztę wysłać list., JA POCZTA IŚĆ LIST WYSŁAĆ
+Poproszę 1 znaczek na list., JA PROSIĆ ZNACZEK LIST
+Wysłałam e-mail do Starostwa Powiatowego., JA EMAIL STAROSTWO WYSŁAĆ
+Ile kosztuje bilet miejski w Rzeszowie?, BILET AUTOBUS MIASTO RZESZÓW ILE KOSZT
+Gdzie Pani mieszka?, TY MIESZKAĆ GDZIE
+Gdzie Pan mieszka?, TY MIESZKAĆ GDZIE
+Gdzie Pani mieszka?, TY GDZIE MIESZKAĆ
+Gdzie Pan mieszka?, TY GDZIE MIESZKAĆ
+Gdzie Pani mieszka?, GDZIE TY MIESZKASZ
+Gdzie Pan mieszka?, GDZIE TY MIESZKASZ
+Czy Pani pracuje?, TY PRACA MIEĆ
+Czy Pan pracuje?, TY PRACA MIEĆ
+Jaki Pani ma zawód?, TY ZAWÓD JAK WYGLĄDA
+Jaki Pan ma zawód?, TY ZAWÓD JAK WYGLĄDA
+Jaki Pani ma zawód?, JAKI TY ZAWÓD
+Jaki Pan ma zawód?, JAKI TY ZAWÓD
+Jaki Pani ma stopień niepełnosprawności?, TY INWALIDA STOPIEŃ JAK WYGLĄDA
+Jaki Pan ma stopień niepełnosprawności?, TY INWALIDA STOPIEŃ JAK WYGLĄDA
+Czy ma Pani orzeczenie o niepełnosprawności na stałe?, TY ORZECZENIE NIEPEŁNOSPRAWNY STAŁE MIEĆ
+Czy ma Pan orzeczenie o niepełnosprawności na stałe?, TY ORZECZENIE NIEPEŁNOSPRAWNY STAŁE MIEĆ
+Ja jestem bezrobotny i szukam pracy., JA PRACA NIE MIEĆ JA PRACA SZUKAĆ
+Ile ma Pani lat?, TY LAT ILE
+Ile ma Pan lat?, TY LAT ILE
+Ile ma Pani lat?, ILE MASZ LAT
+Ile ma Pan lat?, ILE MASZ LAT
+Ja pracuję w zakładzie pracy chronionej., JA PRACA ZAKŁAD OCHRONA
+Ja mam zasiłek dla bezrobotnych od 2 miesięcy., JA ZASIŁEK BEZROBOTNY MIEĆ 2 MIESIĄC
+Czy Pani ma emeryturę czy rentę?, TY EMERYTURA RENTA MIEĆ
+Czy Pan ma emeryturę czy rentę?, TY EMERYTURA RENTA MIEĆ
+Którą ma Pani grupę renty?, TY EMERYTURA RENTA GRUPA JAK WYGLĄDA
+Którą ma Pan grupę renty?, TY EMERYTURA RENTA GRUPA JAK WYGLĄDA
+Którą ma Pani grupę renty?, JAKA MA GRUPA RENTY I II III
+Którą ma Pan grupę renty?, JAKA MA GRUPA RENTY I II III
+Gdzie mam wpisać PESEL., PESEL PISAĆ GDZIE
+Gdzie mam wpisać PESEL., PESEL POTRZEBA GDZIE
+Od 3 miesięcy otrzymuję rentę inwalidzką., JA RENTA 3 MIESIĄCE JUŻ MIEĆ
+Czy ma Pani telewizor w domu?, TY TELEWIZOR DOM MIEĆ
+Czy ma Pan telewizor w domu?, TY TELEWIZOR DOM MIEĆ
+Czy ma Pani telewizor w domu?, CZY MASZ TELEWIZOR
+Czy ma Pan telewizor w domu?, CZY MASZ TELEWIZOR
+Czy w domu jest łazienka?, TY ŁAZIENKA DOM MIEĆ
+Czy w domu jest łazienka?, CZY MASZ ŁAZIENKĘ
