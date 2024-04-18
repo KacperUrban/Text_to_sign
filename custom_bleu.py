@@ -6,25 +6,26 @@ from typing import Tuple
 from datasets import DatasetDict
 import numpy as np
 
-
+#Tu wystarczy podać tylko DatasetDict i iterować po train valid i test  i tworzyć hashmape
 class CustomBleu:
-    """_summary_
+    """That class is modified version of common functin BLEU from nltk library. In this class was added
+    preprocessing phase on data and operate on DatasetDict from datasets library.
     """
     def __init__(self, data:DataFrame, translator:pipeline) -> None:
-        """_summary_
+        """Init function
 
         Args:
-            data (DataFrame): _description_
-            translator (pipeline): _description_
+            data (DataFrame): Dataframe with all examples
+            translator (pipeline): Transformers pipeline
         """
         self.data = data
         self.translator = translator
 
     def prepare_label_to_bleu(self) -> dict:
-        """_summary_
+        """This function build hashmap with sentence in polish and its referneces in sign polish language
 
         Returns:
-            dict: _description_
+            dict: Return dictionary with sentence in base language and its translation sentences.
         """
         hashmap = {}
         for index, row in self.data.iterrows():
@@ -38,13 +39,12 @@ class CustomBleu:
         return hashmap
 
     def score(self, dataset:DatasetDict) -> Tuple[float, DataFrame]:
-        """_summary_
-
+        """Build a hashmap of sentences and its translations. The calculate BLEU score.
         Args:
             dataset (DatasetDict): _description_
 
         Returns:
-            Tuple[float, DataFrame]: _description_
+            Tuple[float, DataFrame]: Return BLEU score and DataFrame with references and translated sentences
         """
         ref_sent = self.prepare_label_to_bleu()
         translation_corpus = []
