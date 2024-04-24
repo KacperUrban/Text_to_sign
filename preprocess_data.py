@@ -1,6 +1,7 @@
 import pandas as pd
 from odf.opendocument import load
 from odf import text, teletype
+from datasets import Dataset, DatasetDict
 
 def capitalize_sentence(sentence: str) -> str:
     """This function captialize first word in sentence and lowercase rest of the sentence. In
@@ -72,7 +73,7 @@ def split_data_from_list(raw_data: list[str]) -> pd.DataFrame:
     data = pd.DataFrame({"pl": pl_sentence, "mig": sentence})
     return data
 
-
+#Load data
 zus_data = pd.read_csv("data/Praca_Socjalna_ZUS_Clean.txt")
 ratow_data = pd.read_csv("data/Ratownictwo_Medyczne_Clean.txt")
 urzed_data = pd.read_csv("data/Urzedy_Instytucje_Administracja_Clean.txt")
@@ -80,16 +81,34 @@ policja_data = pd.read_csv("data/Policja_Straz_Pozarna_Clean.txt")
 raw_data = load_data("data/wypowiedzi.odt")
 wyp_data = split_data_from_list(raw_data)
 
+#Concatanate all data
 all_data = pd.concat(
     [zus_data, ratow_data, urzed_data, policja_data, wyp_data], ignore_index=True
 )
 
+#Capitaliaze all sentences
 all_data["pl"] = all_data["pl"].apply(capitalize_sentence)
 all_data["mig"] = all_data["mig"].apply(capitalize_sentence)
 
+#Check if duplicate rows exists
 if sum(all_data.duplicated()) > 0:
     all_data.drop_duplicates(inplace=True)
 
-all_data.to_csv("data/All_data.csv", index=False)
-print(all_data.shape)
-print(all_data.head(20))
+#Create a dictionary for further preprocessing
+raw_dataset_list = []
+for i in range(0, len(all_data)):
+    raw_dataset_list.append({'translation' : {'pl' : all_data.iloc[i]['pl'], 'mig' : all_data.iloc[i]['mig']}})
+
+#From dictionary create Dataset
+raw_dataset = Dataset.from_list(raw_dataset_list)
+
+#Split data into three datasets
+train_test = raw_dataset.train_test_split(test_size=0.2, seed=42)
+valid_test = train_test['test'].train_test_split(test_size=0.5, seed=42)
+train_test_dataset = DatasetDict({
+    'train': train_test['train'],
+    'valid': valid_test['train'],
+    'test': valid_test['test']})
+
+#Save data
+train_test_dataset.save_to_disk('data/final_data')
