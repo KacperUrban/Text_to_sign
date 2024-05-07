@@ -5,9 +5,9 @@ import pandas as pd
 from typing import Tuple
 from datasets import DatasetDict
 import numpy as np
+from tqdm import tqdm
 
-
-class CustomBleu1:
+class CustomBleu:
     """That class is modified version of common functin BLEU from nltk library. In this class was added
     preprocessing phase on data and operate on DatasetDict from datasets library. Additionaly this class
     enable users get a summary dataframe.
@@ -20,7 +20,7 @@ class CustomBleu1:
             data (DatasetDict): DatasetDict with all examples.
             translator (pipeline): Transformers pipeline.
             
-        Example:
+        Examples:
         Below it is an example of correct DatasetDict structure:
         DatasetDict({
             train: Dataset({
@@ -37,7 +37,7 @@ class CustomBleu1:
             })
         })
         
-        Below also it is example of how to crate transfomers pipeline for translation problem:
+        Below also it is example of how to create transfomers pipeline for translation problem:
         
         from transformers import pipeline
         translator = pipeline('translation', model=model, tokenizer=tokenizer)
@@ -83,7 +83,7 @@ class CustomBleu1:
         reference_corpus_to_display = []
         polish_sentences = []
         identity_check = []
-        for i in range(0, len(self.data[dataset_name]["translation"])):
+        for i in tqdm(range(len(self.data[dataset_name]["translation"]))):
             value = ref_sent[self.data[dataset_name]["translation"][i]["pl"]]
             translation = self.translator(self.data[dataset_name]["translation"][i]["pl"])
             translation_processed = translation[0]["translation_text"].split()
