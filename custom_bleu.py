@@ -6,6 +6,7 @@ from typing import Tuple
 from datasets import DatasetDict
 import numpy as np
 from tqdm import tqdm
+import os
 
 class CustomBleu:
     """That class is modified version of common functin BLEU from nltk library. In this class was added
@@ -114,6 +115,12 @@ class CustomBleu:
         )
         
         if(generate_xlsx):
-            summary_df.to_excel("/experiments/summary" + dataset_name)
-            
+            path = "summary.xlsx"
+            if os.path.exists(path):
+                with pd.ExcelWriter(path, mode='a', if_sheet_exists='overlay') as writer:
+                    summary_df.to_excel(writer, sheet_name=dataset_name)
+            else:
+                with pd.ExcelWriter(path, mode='w') as writer:
+                    summary_df.to_excel(writer, sheet_name=dataset_name)
+                    
         return np.round(sum_bleu/len(self.data[dataset_name]["translation"]), 2), summary_df
