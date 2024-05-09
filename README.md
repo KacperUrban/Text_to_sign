@@ -24,8 +24,8 @@ And then we can add virtual enviroment and kernel to for example a Visual Studio
 * load_model.py
 
 The last step is to create .env file with:
-NEPTUNE_API_TOKEN = "your API key"
-NEPTUNE_PROJECT = "your project name"
+NEPTUNE_API_TOKEN = "your API key"\
+NEPTUNE_PROJECT = "your project name"\
 TF_CPP_MIN_LOG_LEVEL = "3"
 
 Then you can run Main.ipynb notebook cell by cell or in different way. For example if you have a trained model, you can load libraries and data and go to the test phase.
