@@ -23,7 +23,7 @@ And then we can add virtual enviroment and kernel to for example a Visual Studio
 * preprocess_data.py
 * load_model.py
 
-The last step is to create .env file with:
+The last step is to create .env file with:\
 NEPTUNE_API_TOKEN = "your API key"\
 NEPTUNE_PROJECT = "your project name"\
 TF_CPP_MIN_LOG_LEVEL = "3"
