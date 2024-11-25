@@ -130,3 +130,15 @@ dmypy.json
 
 #models
 .h5
+
+#neptune
+/.neptune
+
+#data
+/data
+
+#venv
+/ttsvenv
+
+#models and tokenizer
+/model
