@@ -1,78 +1,10 @@
 import pandas as pd
-from odf.opendocument import load
-from odf import text, teletype
 from datasets import Dataset, DatasetDict
-
-
-def capitalize_sentence(sentence: str) -> str:
-    """This function captialize first word in sentence and lowercase rest of the sentence. In
-    this function was added some conditions to lowercasing and captializing.
-
-    Args:
-        sentence (str): sentence in polish or sign language
-
-    Returns:
-        str: preprocessed sentence
-    """
-    cap_words = ["pani", "pana", "panu", "pan", "panią"]
-    up_words = ["I", "II", "III"]
-    words = sentence.split()
-    if words[0] not in up_words:
-        words[0] = words[0].capitalize()
-    words[1:] = [
-        (
-            word.capitalize()
-            if word.lower() in cap_words
-            else word.upper() if word in up_words else word.lower()
-        )
-        for word in words[1:]
-    ]
-    return " ".join(words)
-
-
-def load_data(filepath: str) -> list[str]:
-    """The function has to load data from odf format and return list of file lines.
-
-    Args:
-        filepath (str): path to the file
-
-    Returns:
-        list[str]: list of the file lines
-    """
-    raw_data = []
-    text_doc = load(filepath)
-    all_params = text_doc.getElementsByType(text.P)
-    for line in all_params:
-        raw_data.append(teletype.extractText(line))
-    return raw_data
-
-
-def split_data_from_list(raw_data: list[str]) -> pd.DataFrame:
-    """That function process data from list and splits data into pair of examples. In the left column is sentence
-    in polish language and in the right column is sentence in polish sign language.
-
-    Args:
-        raw_data (list[str]): list of the sentence in polish and sign language
-
-    Returns:
-        pd.DataFrame: DataFrame with sentence in polish language and in sign language
-    """
-    pl_sentence = []
-    sentence = []
-    i = 0
-    while i < len(raw_data):
-        if raw_data[i + 1] == "[":
-            value = raw_data[i]
-            i += 2
-            while i < len(raw_data):
-                if raw_data[i] == "]":
-                    break
-                pl_sentence.append(value[1:])
-                sentence.append(raw_data[i])
-                i += 1
-        i += 1
-    data = pd.DataFrame({"pl": pl_sentence, "mig": sentence})
-    return data
+from custom_utils.custom_preprocessing import (
+    capitalize_sentence,
+    load_data,
+    split_data_from_list,
+)
 
 
 if __name__ == "__main__":
@@ -84,18 +16,47 @@ if __name__ == "__main__":
     raw_data = load_data("data/wypowiedzi.odt")
     wyp_data = split_data_from_list(raw_data)
 
+    # Capitaliaze all sentences
+    zus_data["pl"] = zus_data["pl"].apply(capitalize_sentence)
+    zus_data["mig"] = zus_data["mig"].apply(capitalize_sentence)
+    if sum(zus_data.duplicated()) > 0:
+        zus_data.drop_duplicates(inplace=True)
+    zus_data.to_csv("data/final_data/zus_data.csv")
+
+    ratow_data["pl"] = ratow_data["pl"].apply(capitalize_sentence)
+    ratow_data["mig"] = ratow_data["mig"].apply(capitalize_sentence)
+    if sum(ratow_data.duplicated()) > 0:
+        ratow_data.drop_duplicates(inplace=True)
+    ratow_data.to_csv("data/final_data/ratownictwo_data.csv")
+
+    urzed_data["pl"] = urzed_data["pl"].apply(capitalize_sentence)
+    urzed_data["mig"] = urzed_data["mig"].apply(capitalize_sentence)
+    if sum(urzed_data.duplicated()) > 0:
+        urzed_data.drop_duplicates(inplace=True)
+    urzed_data.to_csv("data/final_data/urzedy_data.csv")
+
+    policja_data["pl"] = policja_data["pl"].apply(capitalize_sentence)
+    policja_data["mig"] = policja_data["mig"].apply(capitalize_sentence)
+    if sum(policja_data.duplicated()) > 0:
+        policja_data.drop_duplicates(inplace=True)
+    policja_data.to_csv("data/final_data/policja_data.csv")
+
+    wyp_data["pl"] = wyp_data["pl"].apply(capitalize_sentence)
+    wyp_data["mig"] = wyp_data["mig"].apply(capitalize_sentence)
+    if sum(wyp_data.duplicated()) > 0:
+        wyp_data.drop_duplicates(inplace=True)
+    wyp_data.to_csv("data/final_data/wypowiedzi_data.csv")
+
     # Concatanate all data
     all_data = pd.concat(
         [zus_data, ratow_data, urzed_data, policja_data, wyp_data], ignore_index=True
     )
 
-    # Capitaliaze all sentences
-    all_data["pl"] = all_data["pl"].apply(capitalize_sentence)
-    all_data["mig"] = all_data["mig"].apply(capitalize_sentence)
-
     # Check if duplicate rows exists
     if sum(all_data.duplicated()) > 0:
         all_data.drop_duplicates(inplace=True)
+
+    all_data.to_csv("data/final_data/all_data.csv")
 
     # Create a dictionary for further preprocessing
     raw_dataset_list = []
