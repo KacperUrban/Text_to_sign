@@ -21,31 +21,31 @@ if __name__ == "__main__":
     zus_data["mig"] = zus_data["mig"].apply(capitalize_sentence)
     if sum(zus_data.duplicated()) > 0:
         zus_data.drop_duplicates(inplace=True)
-    zus_data.to_csv("data/final_data/zus_data.csv")
+    zus_data.to_csv("data/final_data/zus_data.csv", index=False)
 
     ratow_data["pl"] = ratow_data["pl"].apply(capitalize_sentence)
     ratow_data["mig"] = ratow_data["mig"].apply(capitalize_sentence)
     if sum(ratow_data.duplicated()) > 0:
         ratow_data.drop_duplicates(inplace=True)
-    ratow_data.to_csv("data/final_data/ratownictwo_data.csv")
+    ratow_data.to_csv("data/final_data/ratownictwo_data.csv", index=False)
 
     urzed_data["pl"] = urzed_data["pl"].apply(capitalize_sentence)
     urzed_data["mig"] = urzed_data["mig"].apply(capitalize_sentence)
     if sum(urzed_data.duplicated()) > 0:
         urzed_data.drop_duplicates(inplace=True)
-    urzed_data.to_csv("data/final_data/urzedy_data.csv")
+    urzed_data.to_csv("data/final_data/urzedy_data.csv", index=False)
 
     policja_data["pl"] = policja_data["pl"].apply(capitalize_sentence)
     policja_data["mig"] = policja_data["mig"].apply(capitalize_sentence)
     if sum(policja_data.duplicated()) > 0:
         policja_data.drop_duplicates(inplace=True)
-    policja_data.to_csv("data/final_data/policja_data.csv")
+    policja_data.to_csv("data/final_data/policja_data.csv", index=False)
 
     wyp_data["pl"] = wyp_data["pl"].apply(capitalize_sentence)
     wyp_data["mig"] = wyp_data["mig"].apply(capitalize_sentence)
     if sum(wyp_data.duplicated()) > 0:
         wyp_data.drop_duplicates(inplace=True)
-    wyp_data.to_csv("data/final_data/wypowiedzi_data.csv")
+    wyp_data.to_csv("data/final_data/wypowiedzi_data.csv", index=False)
 
     # Concatanate all data
     all_data = pd.concat(
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     if sum(all_data.duplicated()) > 0:
         all_data.drop_duplicates(inplace=True)
 
-    all_data.to_csv("data/final_data/all_data.csv")
+    all_data.to_csv("data/final_data/all_data.csv", index=False)
 
     # Create a dictionary for further preprocessing
     raw_dataset_list = []
