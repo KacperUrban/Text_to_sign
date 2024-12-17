@@ -37,7 +37,7 @@ def collate_fn(batch):
     }
 
 
-def evaluate_model_on_metrics(model, dataloader, tokenizer, bleu_metric, meteor_metric, rouge_metric, device):
+def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device):
     model.eval()
     all_preds = []
     all_labels = []
@@ -53,13 +53,8 @@ def evaluate_model_on_metrics(model, dataloader, tokenizer, bleu_metric, meteor_
             all_labels.extend(references)
 
     # Tokenize predictions and references
-    all_preds_tokenized = [pred.split() for pred in all_preds]
-    all_labels_tokenized = [[label.split()] for label in all_labels]
-    
+    all_preds_tokenized = [pred for pred in all_preds]
+    all_labels_tokenized = [[label] for label in all_labels]
 
-    # Compute metrics
     bleu_score = np.round(bleu_metric.compute(predictions=all_preds_tokenized, references=all_labels_tokenized)['bleu'], 3)
-    meteor_score = np.round(meteor_metric.compute(predictions=all_preds, references=all_labels)['meteor'], 3)
-    rouge_score = np.round(rouge_metric.compute(predictions=all_preds, references=all_labels)["rougeL"].mid.fmeasure, 3)
-
-    return bleu_score, meteor_score, rouge_score
+    return bleu_score
