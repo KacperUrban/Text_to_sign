@@ -142,3 +142,6 @@ dmypy.json
 
 #models and tokenizer
 /model
+
+# logs
+/logs
