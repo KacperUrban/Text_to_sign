@@ -9,7 +9,6 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from torch.optim import Adam
 import evaluate
-from datasets import load_metric
 import os
 
 class TranslationDataset(Dataset):
@@ -44,7 +43,7 @@ def collate_fn(batch):
     }
 
 
-def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fold_name):
+def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fold_name=None):
     model.eval()
     all_inputs = []
     all_preds = []
@@ -62,9 +61,10 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
             all_labels.extend(references)
             all_inputs.extend(inputs)
 
-    preds = pd.DataFrame({"inputs" : all_inputs, "predictions" : all_preds, "labels" : all_labels})
-    filename = f"{fold_name}.csv"
-    preds.to_csv(os.path.join('.', 'logs', filename))
+    if fold_name:
+        preds = pd.DataFrame({"inputs" : all_inputs, "predictions" : all_preds, "labels" : all_labels})
+        filename = f"{fold_name}.csv"
+        preds.to_csv(os.path.join('.', 'logs', filename))
     bleu_score = np.round(bleu_metric.compute(predictions=all_preds, references=all_labels)['bleu'], 3)
     return bleu_score
 
@@ -100,4 +100,4 @@ def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=1
         avg_bleu += bleu_score
         print(f"BLEU score: {bleu_score}")
         torch.cuda.empty_cache()
-    return bleu_score
+    return np.round(avg_bleu / (i + 1), 3)
