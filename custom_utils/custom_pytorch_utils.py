@@ -1,9 +1,16 @@
 import numpy as np
 import torch
+import pandas as pd
 from torch.utils.data import Dataset
 from torch.nn.utils.rnn import pad_sequence
 from transformers import AutoTokenizer
-
+from sklearn.model_selection import KFold
+from torch.utils.data import DataLoader
+from tqdm import tqdm
+from torch.optim import Adam
+import evaluate
+from datasets import load_metric
+import os
 
 class TranslationDataset(Dataset):
     def __init__(self, input_texts, target_texts, tokenizer):
@@ -37,8 +44,9 @@ def collate_fn(batch):
     }
 
 
-def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device):
+def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fold_name):
     model.eval()
+    all_inputs = []
     all_preds = []
     all_labels = []
 
@@ -48,13 +56,48 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device):
             outputs = model.generate(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"])
             predictions = [tokenizer.decode(g, skip_special_tokens=True) for g in outputs]
             references = [tokenizer.decode(g, skip_special_tokens=True) for g in batch["labels"]]
+            inputs = [tokenizer.decode(g, skip_special_tokens=True) for g in batch["input_ids"]]
 
             all_preds.extend(predictions)
             all_labels.extend(references)
+            all_inputs.extend(inputs)
 
-    # Tokenize predictions and references
-    all_preds_tokenized = [pred for pred in all_preds]
-    all_labels_tokenized = [[label] for label in all_labels]
+    preds = pd.DataFrame({"inputs" : all_inputs, "predictions" : all_preds, "labels" : all_labels})
+    filename = f"{fold_name}.csv"
+    preds.to_csv(os.path.join('.', 'logs', filename))
+    bleu_score = np.round(bleu_metric.compute(predictions=all_preds, references=all_labels)['bleu'], 3)
+    return bleu_score
 
-    bleu_score = np.round(bleu_metric.compute(predictions=all_preds_tokenized, references=all_labels_tokenized)['bleu'], 3)
+
+def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16):
+    bleu_metric = evaluate.load("bleu")
+    initial_state_dict = model.state_dict()
+    kfold = KFold(n_splits=n_splits, shuffle=True)
+    avg_bleu = 0
+    train_data = TranslationDataset(data.pl, data.mig, tokenizer)
+
+    for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
+        print(f"Fold {i + 1}")
+        train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
+        test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
+        
+        model.load_state_dict(initial_state_dict)
+        model.to(device)
+        lr = 5e-5
+        optimizer = Adam(model.parameters(), lr=lr)
+        model.train()
+        for epoch in range(num_epochs):
+            for batch in tqdm(train_dataloader):
+                batch = {key: value.to(device) for key, value in batch.items()}
+
+                outputs = model(**batch)
+                loss = outputs.loss
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+
+        bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
+        avg_bleu += bleu_score
+        print(f"BLEU score: {bleu_score}")
+        torch.cuda.empty_cache()
     return bleu_score
