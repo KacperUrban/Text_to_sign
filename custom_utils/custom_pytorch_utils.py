@@ -89,24 +89,24 @@ def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=1
             model.train()
 
             with torch.profiler.profile(
-                activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
-                schedule=torch.profiler.schedule(wait=0, warmup=1, active=10),
-                on_trace_ready=None,
-                record_shapes=True,
-                with_stack=True
-            ) as prof:
+            activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
+            schedule=torch.profiler.schedule(wait=1, warmup=1, active=2),
+            on_trace_ready=torch.profiler.tensorboard_trace_handler("./logs"),
+            record_shapes=True,
+            with_stack=True
+        ) as prof:
                 for epoch in range(num_epochs):
                     for batch in tqdm(train_dataloader):
                         batch = {key: value.to(device) for key, value in batch.items()}
+
                         outputs = model(**batch)
                         loss = outputs.loss
                         optimizer.zero_grad()
                         loss.backward()
                         optimizer.step()
                     prof.step()
-                prof.export_chrome_trace("./logs/trace.json")
 
-            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, fold_name=f"Fold_{i + 1}")
+            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
             avg_bleu += bleu_score
             print(f"BLEU score: {bleu_score}")
             torch.cuda.empty_cache()
@@ -131,7 +131,7 @@ def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=1
                     loss.backward()
                     optimizer.step()
 
-            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, fold_name=f"Fold_{i + 1}")
+            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
             avg_bleu += bleu_score
             print(f"BLEU score: {bleu_score}")
             torch.cuda.empty_cache()

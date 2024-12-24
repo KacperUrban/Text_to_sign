@@ -13,4 +13,4 @@ if __name__ == '__main__':
 
     data = pd.read_csv("data/final_data/all_data.csv")
 
-    print(f"Average BLEU score: {cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16, trace=True)}")
+    print(f"Average BLEU score: {cross_validation_pt(model, tokenizer, data, device, num_epochs=2, n_splits=3, batch_size=16, trace=True)}")
