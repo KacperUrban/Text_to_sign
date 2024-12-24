@@ -64,40 +64,76 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     if fold_name:
         preds = pd.DataFrame({"inputs" : all_inputs, "predictions" : all_preds, "labels" : all_labels})
         filename = f"{fold_name}.csv"
-        preds.to_csv(os.path.join('.', 'logs', filename))
+        preds.to_csv(os.path.join('.', 'logs_cv', filename))
     bleu_score = np.round(bleu_metric.compute(predictions=all_preds, references=all_labels)['bleu'], 3)
     return bleu_score
 
 
-def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16):
+def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16, trace=False):
     bleu_metric = evaluate.load("bleu")
     initial_state_dict = model.state_dict()
     kfold = KFold(n_splits=n_splits, shuffle=True)
     avg_bleu = 0
     train_data = TranslationDataset(data.pl, data.mig, tokenizer)
 
-    for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
-        print(f"Fold {i + 1}")
-        train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
-        test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
-        
-        model.load_state_dict(initial_state_dict)
-        model.to(device)
-        lr = 5e-5
-        optimizer = Adam(model.parameters(), lr=lr)
-        model.train()
-        for epoch in range(num_epochs):
-            for batch in tqdm(train_dataloader):
-                batch = {key: value.to(device) for key, value in batch.items()}
+    if trace:
+        for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
+            print(f"Fold {i + 1}")
+            train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
+            test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
+            
+            model.load_state_dict(initial_state_dict)
+            model.to(device)
+            lr = 5e-5
+            optimizer = Adam(model.parameters(), lr=lr)
+            model.train()
 
-                outputs = model(**batch)
-                loss = outputs.loss
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
+            with torch.profiler.profile(
+                activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
+                schedule=torch.profiler.schedule(wait=0, warmup=1, active=10),
+                on_trace_ready=None,
+                record_shapes=True,
+                with_stack=True
+            ) as prof:
+                for epoch in range(num_epochs):
+                    for batch in tqdm(train_dataloader):
+                        batch = {key: value.to(device) for key, value in batch.items()}
+                        outputs = model(**batch)
+                        loss = outputs.loss
+                        optimizer.zero_grad()
+                        loss.backward()
+                        optimizer.step()
+                    prof.step()
+                prof.export_chrome_trace("./logs/trace.json")
 
-        bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
-        avg_bleu += bleu_score
-        print(f"BLEU score: {bleu_score}")
-        torch.cuda.empty_cache()
+            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, fold_name=f"Fold_{i + 1}")
+            avg_bleu += bleu_score
+            print(f"BLEU score: {bleu_score}")
+            torch.cuda.empty_cache()
+    else:
+        for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
+            print(f"Fold {i + 1}")
+            train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
+            test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
+            
+            model.load_state_dict(initial_state_dict)
+            model.to(device)
+            lr = 5e-5
+            optimizer = Adam(model.parameters(), lr=lr)
+            model.train()
+            for epoch in range(num_epochs):
+                for batch in tqdm(train_dataloader):
+                    batch = {key: value.to(device) for key, value in batch.items()}
+
+                    outputs = model(**batch)
+                    loss = outputs.loss
+                    optimizer.zero_grad()
+                    loss.backward()
+                    optimizer.step()
+
+            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, fold_name=f"Fold_{i + 1}")
+            avg_bleu += bleu_score
+            print(f"BLEU score: {bleu_score}")
+            torch.cuda.empty_cache()
+    
     return np.round(avg_bleu / (i + 1), 3)

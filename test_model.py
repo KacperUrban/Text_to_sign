@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 import pandas as pd
 from custom_utils.custom_pytorch_utils import cross_validation_pt
 
-
 if __name__ == '__main__':
     load_dotenv()
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -14,4 +13,4 @@ if __name__ == '__main__':
 
     data = pd.read_csv("data/final_data/all_data.csv")
 
-    print(f"Average BLEU score: {cross_validation_pt(model, tokenizer, data, device)}")
+    print(f"Average BLEU score: {cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16, trace=True)}")
