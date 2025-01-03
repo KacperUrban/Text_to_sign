@@ -13,9 +13,8 @@ if __name__ == "__main__":
     ratow_data = pd.read_csv("data/Ratownictwo_Medyczne_Clean.txt")
     urzed_data = pd.read_csv("data/Urzedy_Instytucje_Administracja_Clean.txt")
     policja_data = pd.read_csv("data/Policja_Straz_Pozarna_Clean.txt")
-    raw_data = load_data("data/wypowiedzi.odt")
-    wyp_data = split_data_from_list(raw_data)
-
+    raw_data = load_data("data/urzad_dowody.odt")
+    urzad_dowod_data = split_data_from_list(raw_data)
     # Capitaliaze all sentences
     zus_data["pl"] = zus_data["pl"].apply(capitalize_sentence)
     zus_data["mig"] = zus_data["mig"].apply(capitalize_sentence)
@@ -41,15 +40,15 @@ if __name__ == "__main__":
         policja_data.drop_duplicates(inplace=True)
     policja_data.to_csv("data/final_data/policja_data.csv", index=False)
 
-    wyp_data["pl"] = wyp_data["pl"].apply(capitalize_sentence)
-    wyp_data["mig"] = wyp_data["mig"].apply(capitalize_sentence)
-    if sum(wyp_data.duplicated()) > 0:
-        wyp_data.drop_duplicates(inplace=True)
-    wyp_data.to_csv("data/final_data/wypowiedzi_data.csv", index=False)
+    urzad_dowod_data["pl"] = urzad_dowod_data["pl"].apply(capitalize_sentence)
+    urzad_dowod_data["mig"] = urzad_dowod_data["mig"].apply(capitalize_sentence)
+    if sum(urzad_dowod_data.duplicated()) > 0:
+        urzad_dowod_data.drop_duplicates(inplace=True)
+    urzad_dowod_data.to_csv("data/final_data/urzad_dowod.csv", index=False)
 
     # Concatanate all data
     all_data = pd.concat(
-        [zus_data, ratow_data, urzed_data, policja_data, wyp_data], ignore_index=True
+        [zus_data, ratow_data, urzed_data, policja_data, urzad_dowod_data], ignore_index=True
     )
 
     # Check if duplicate rows exists

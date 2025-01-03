@@ -1,6 +1,7 @@
 import pandas as pd
 from odf.opendocument import load
 from odf import text, teletype
+from odf.opendocument import load
 
 
 def capitalize_sentence(sentence: str) -> str:
@@ -43,6 +44,7 @@ def load_data(filepath: str) -> list[str]:
     all_params = text_doc.getElementsByType(text.P)
     for line in all_params:
         raw_data.append(teletype.extractText(line))
+
     return raw_data
 
 
@@ -59,16 +61,15 @@ def split_data_from_list(raw_data: list[str]) -> pd.DataFrame:
     pl_sentence = []
     sentence = []
     i = 0
+
     while i < len(raw_data):
-        if raw_data[i + 1] == "[":
-            value = raw_data[i]
-            i += 2
-            while i < len(raw_data):
-                if raw_data[i] == "]":
-                    break
-                pl_sentence.append(value[1:])
-                sentence.append(raw_data[i])
-                i += 1
-        i += 1
+        try:
+            int(raw_data[i])
+            pl_sentence.append(raw_data[i + 1])
+            sentence.append(raw_data[i + 2])
+            i += 3
+        except (ValueError, IndexError):
+            i += 1
+
     data = pd.DataFrame({"pl": pl_sentence, "mig": sentence})
     return data
