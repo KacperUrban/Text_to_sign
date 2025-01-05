@@ -69,7 +69,7 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     return bleu_score
 
 
-def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16, trace=False):
+def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16, lr = 5e-5, trace=False):
     bleu_metric = evaluate.load("bleu")
     initial_state_dict = model.state_dict()
     kfold = KFold(n_splits=n_splits, shuffle=True)
@@ -84,7 +84,6 @@ def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=1
             
             model.load_state_dict(initial_state_dict)
             model.to(device)
-            lr = 5e-5
             optimizer = Adam(model.parameters(), lr=lr)
             model.train()
 
@@ -118,7 +117,6 @@ def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=1
             
             model.load_state_dict(initial_state_dict)
             model.to(device)
-            lr = 5e-5
             optimizer = Adam(model.parameters(), lr=lr)
             model.train()
             for epoch in range(num_epochs):
