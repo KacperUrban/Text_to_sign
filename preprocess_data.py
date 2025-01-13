@@ -15,7 +15,16 @@ if __name__ == "__main__":
     policja_data = pd.read_csv("data/Policja_Straz_Pozarna_Clean.txt")
     raw_data = load_data("data/urzad_dowody.odt")
     urzad_dowod_data = split_data_from_list(raw_data)
+    augmented_data = pd.read_csv("data/augmented_data_draft.csv")
     # Capitaliaze all sentences
+    augmented_data["pl"] = augmented_data["pl"].apply(capitalize_sentence)
+    augmented_data["mig"] = augmented_data["mig"].apply(capitalize_sentence)
+
+    if sum(augmented_data.duplicated()) > 0:
+        print(f"Number of duplicates: {sum(augmented_data.duplicated())}")
+        augmented_data.drop_duplicates(inplace=True)
+    augmented_data.to_csv("data/final_data/augmented_data.csv", index=False)
+
     zus_data["pl"] = zus_data["pl"].apply(capitalize_sentence)
     zus_data["mig"] = zus_data["mig"].apply(capitalize_sentence)
     if sum(zus_data.duplicated()) > 0:
