@@ -48,6 +48,7 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     all_inputs = []
     all_preds = []
     all_labels = []
+    all_results = []
 
     with torch.no_grad():
         for batch in dataloader:
@@ -61,12 +62,17 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
             all_labels.extend(references)
             all_inputs.extend(inputs)
 
+            batch_bleu = bleu_metric.compute(predictions=predictions, references=references)['bleu']
+            all_results.append(batch_bleu)
+
     if fold_name:
         preds = pd.DataFrame({"inputs" : all_inputs, "predictions" : all_preds, "labels" : all_labels})
         filename = f"{fold_name}.csv"
         preds.to_csv(os.path.join('.', 'logs_cv', filename))
-    bleu_score = np.round(bleu_metric.compute(predictions=all_preds, references=all_labels)['bleu'], 3)
-    return bleu_score
+    final_bleu = np.mean(all_results)
+    del outputs, predictions, references, inputs
+    torch.cuda.empty_cache()
+    return np.round(final_bleu, 3)
 
 
 def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16, lr = 5e-5, trace=False):
