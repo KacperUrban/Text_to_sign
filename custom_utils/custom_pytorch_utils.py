@@ -10,6 +10,7 @@ from tqdm import tqdm
 from torch.optim import Adam
 import evaluate
 import os
+import gc
 
 class TranslationDataset(Dataset):
     def __init__(self, input_texts, target_texts, tokenizer):
@@ -70,7 +71,8 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
         filename = f"{fold_name}.csv"
         preds.to_csv(os.path.join('.', 'logs_cv', filename))
     final_bleu = np.mean(all_results)
-    del outputs, predictions, references, inputs
+    del outputs, predictions, references, inputs, batch
+    gc.collect()
     torch.cuda.empty_cache()
     return np.round(final_bleu, 3)
 
