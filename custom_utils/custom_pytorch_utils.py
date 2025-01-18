@@ -7,7 +7,7 @@ from transformers import AutoTokenizer
 from sklearn.model_selection import KFold
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from torch.optim import Adam
+from torch.optim import Adam, SGD
 import evaluate
 import os
 import gc
@@ -77,7 +77,7 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     return np.round(final_bleu, 3)
 
 
-def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=10, batch_size=16, lr = 5e-5, trace=False):
+def cross_validation_pt(model, tokenizer, data, device, optimizer="Adam", momentum=0.0, num_epochs=5, n_splits=10, batch_size=16, lr = 5e-5, trace=False):
     bleu_metric = evaluate.load("bleu")
     initial_state_dict = model.state_dict()
     kfold = KFold(n_splits=n_splits, shuffle=True)
@@ -92,7 +92,10 @@ def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=1
             
             model.load_state_dict(initial_state_dict)
             model.to(device)
-            optimizer = Adam(model.parameters(), lr=lr)
+            if optimizer == "Adam":
+                optimizer = Adam(model.parameters(), lr=lr)
+            elif optimizer == "SGD":
+                optimizer = SGD(model.parameters(), lr=lr, momentum=momentum)
             model.train()
 
             with torch.profiler.profile(
@@ -124,8 +127,11 @@ def cross_validation_pt(model, tokenizer, data, device, num_epochs=5, n_splits=1
             test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
             
             model.load_state_dict(initial_state_dict)
-            model.to(device)
-            optimizer = Adam(model.parameters(), lr=lr)
+            model.to(device)            
+            if optimizer == "Adam":
+                optimizer = Adam(model.parameters(), lr=lr)
+            elif optimizer == "SGD":
+                optimizer = SGD(model.parameters(), lr=lr, momentum=momentum)
             model.train()
             for epoch in range(num_epochs):
                 for batch in tqdm(train_dataloader):
