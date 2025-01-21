@@ -54,7 +54,7 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     with torch.no_grad():
         for batch in dataloader:
             batch = {key: value.to(device) for key, value in batch.items()}
-            outputs = model.generate(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"])
+            outputs = model.generate(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"], max_length=100)
             predictions = [tokenizer.decode(g, skip_special_tokens=True) for g in outputs]
             references = [tokenizer.decode(g, skip_special_tokens=True) for g in batch["labels"]]
             inputs = [tokenizer.decode(g, skip_special_tokens=True) for g in batch["input_ids"]]
@@ -77,75 +77,43 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     return np.round(final_bleu, 3)
 
 
-def cross_validation_pt(model, tokenizer, data, device, optimizer="Adam", momentum=0.0, num_epochs=5, n_splits=10, batch_size=16, lr = 5e-5, trace=False):
+def train(model, optimizer, train_dataloader, device, num_epochs):
+    model.train()
+    for epoch in range(num_epochs):
+        for batch in tqdm(train_dataloader):
+            batch = {key: value.to(device) for key, value in batch.items()}
+
+            outputs = model(**batch)
+            loss = outputs.loss
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+    return model
+
+def cross_validation_pt(model, tokenizer, data, device, hyperparams, num_epochs=5, n_splits=10, batch_size=16):
     bleu_metric = evaluate.load("bleu")
     initial_state_dict = model.state_dict()
     kfold = KFold(n_splits=n_splits, shuffle=True)
     avg_bleu = 0
     train_data = TranslationDataset(data.pl, data.mig, tokenizer)
+    for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
+        print(f"Fold {i + 1}")
+        train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
+        test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
+        
+        model.load_state_dict(initial_state_dict)
+        model.to(device)            
+        if hyperparams["optimizer_name"] == "Adam":
+            optimizer = Adam(model.parameters(), lr=hyperparams["lr"])
+        elif hyperparams["optimizer_name"] == "SGD":
+            optimizer = SGD(model.parameters(), lr=hyperparams["lr"], momentum=hyperparams["momentum"])
+        
+        model = train(model, optimizer, train_dataloader, device, num_epochs)
 
-    if trace:
-        for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
-            print(f"Fold {i + 1}")
-            train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
-            test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
-            
-            model.load_state_dict(initial_state_dict)
-            model.to(device)
-            if optimizer == "Adam":
-                optimizer = Adam(model.parameters(), lr=lr)
-            elif optimizer == "SGD":
-                optimizer = SGD(model.parameters(), lr=lr, momentum=momentum)
-            model.train()
-
-            with torch.profiler.profile(
-            activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
-            schedule=torch.profiler.schedule(wait=1, warmup=1, active=2),
-            on_trace_ready=torch.profiler.tensorboard_trace_handler("./logs"),
-            record_shapes=True,
-            with_stack=True
-        ) as prof:
-                for epoch in range(num_epochs):
-                    for batch in tqdm(train_dataloader):
-                        batch = {key: value.to(device) for key, value in batch.items()}
-
-                        outputs = model(**batch)
-                        loss = outputs.loss
-                        optimizer.zero_grad()
-                        loss.backward()
-                        optimizer.step()
-                    prof.step()
-
-            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
-            avg_bleu += bleu_score
-            print(f"BLEU score: {bleu_score}")
-            torch.cuda.empty_cache()
-    else:
-        for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
-            print(f"Fold {i + 1}")
-            train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
-            test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
-            
-            model.load_state_dict(initial_state_dict)
-            model.to(device)            
-            if optimizer == "Adam":
-                optimizer = Adam(model.parameters(), lr=lr)
-            elif optimizer == "SGD":
-                optimizer = SGD(model.parameters(), lr=lr, momentum=momentum)
-            model.train()
-            for epoch in range(num_epochs):
-                for batch in tqdm(train_dataloader):
-                    batch = {key: value.to(device) for key, value in batch.items()}
-
-                    outputs = model(**batch)
-                    loss = outputs.loss
-                    optimizer.zero_grad()
-                    loss.backward()
-                    optimizer.step()
-
-            bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
-            avg_bleu += bleu_score
-            print(f"BLEU score: {bleu_score}")
-            torch.cuda.empty_cache()
+        bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
+        avg_bleu += bleu_score
+        print(f"BLEU score: {bleu_score}")
+        torch.cuda.empty_cache()
+    gc.collect()
     
     return np.round(avg_bleu / (i + 1), 3)
