@@ -104,7 +104,7 @@ def cross_validation_pt(model, tokenizer, data, device, hyperparams, num_epochs=
         model.load_state_dict(initial_state_dict)
         model.to(device)            
         if hyperparams["optimizer_name"] == "Adam":
-            optimizer = Adam(model.parameters(), lr=hyperparams["lr"])
+            optimizer = Adam(model.parameters(), lr=hyperparams["lr"], betas=(hyperparams['beta1'], hyperparams['beta2']))
         elif hyperparams["optimizer_name"] == "SGD":
             optimizer = SGD(model.parameters(), lr=hyperparams["lr"], momentum=hyperparams["momentum"])
         
