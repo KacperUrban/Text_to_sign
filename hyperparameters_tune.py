@@ -32,32 +32,31 @@ def timeit(func):
 def log_params(run, hyperparams):
     run["hyperparameters/learning_rate"] = hyperparams["lr"]
     run["hyperparameters/optimizer"] = hyperparams["optimizer_name"]
-    if hyperparams["optimizer_name"] == "Adam":
-        run["hyperparameters/beta1"] = hyperparams["Beta1"]
-        run["hyperparameters/beta2"] = hyperparams["Beta2"]
-    if hyperparams["optimizer_name"] == "SGD":
-        run["hyperparameters/momentum"] = hyperparams["momentum"]
+    run["hyperparameters/beta1"] = hyperparams["beta1"]
+    run["hyperparameters/beta2"] = hyperparams["beta2"]
+    run["hyperparameters/momentum"] = hyperparams["momentum"]
 
 
 def objective(trail):
-    with neptune.init_run(tags=["Test"]) as run:
+    with neptune.init_run(tags=["Experiment 1 - frozen"]) as run:
         model = AutoModelForSeq2SeqLM.from_pretrained("model/model")
         tokenizer = AutoTokenizer.from_pretrained("model/tokenizer/")
 
-        # for params in model.model.encoder.layers.parameters():
-        #   params.requires_grad = False
+        for params in model.model.encoder.layers.parameters():
+            params.requires_grad = False
 
         hyperparams = defaultdict(int)
         hyperparams["lr"] = trail.suggest_float("lr", low=5e-9, high=5e-4)
         hyperparams["optimizer_name"] = trail.suggest_categorical(
             "optimizer", ["Adam", "SGD"]
         )
-        hyperparams["Beta1"] = trail.suggest_float("Beta1", low=0.0, high=1.0)
-        hyperparams["Beta2"] = trail.suggest_float("Beta2", low=0.0, high=1.0)
 
         if hyperparams["optimizer_name"] == "SGD":
             hyperparams["momentum"] = trail.suggest_float("momentum", low=0.0, high=1.0)
-
+        else:
+            hyperparams["beta1"] = trail.suggest_float("beta1", low=0.0, high=1.0)
+            hyperparams["beta2"] = trail.suggest_float("beta2", low=0.0, high=1.0)
+        
         log_params(run, hyperparams)
         score = cross_validation_pt(
             model,
@@ -76,7 +75,7 @@ def objective(trail):
 @timeit
 def optimize_with_optuna():
     study = optuna.create_study(direction="maximize")
-    study.optimize(objective, n_trials=2)
+    study.optimize(objective, n_trials=40)
 
     print("Best params: ", study.best_params)
     print("Best value: ", study.best_value)
