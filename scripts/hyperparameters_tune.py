@@ -1,8 +1,15 @@
+import sys
+import os
+
+parent_dir = os.path.dirname(os.getcwd())
+sys.path.append(parent_dir)
+
+from config import DATA_DIR, MODEL_DIR, TOKENIZER_DIR, BASE_DIR
+from custom_utils import cross_validation_pt
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 from dotenv import load_dotenv
 import pandas as pd
-from custom_utils.custom_pytorch_utils import cross_validation_pt
 import optuna
 import time
 import numpy as np
@@ -38,15 +45,15 @@ def log_params(run, hyperparams):
 
 
 def objective(trail):
-    with neptune.init_run(tags=["Experiment 1 - frozen"]) as run:
-        model = AutoModelForSeq2SeqLM.from_pretrained("model/model")
-        tokenizer = AutoTokenizer.from_pretrained("model/tokenizer/")
+    with neptune.init_run(tags=["TEST"]) as run:
+        model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
+        tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
 
         for params in model.model.encoder.layers.parameters():
             params.requires_grad = False
 
         hyperparams = defaultdict(int)
-        hyperparams["lr"] = trail.suggest_float("lr", low=5e-9, high=5e-4)
+        hyperparams["lr"] = trail.suggest_float("lr", low=5e-9, high=5e-4, log=True)
         hyperparams["optimizer_name"] = trail.suggest_categorical(
             "optimizer", ["Adam", "SGD"]
         )
@@ -54,8 +61,8 @@ def objective(trail):
         if hyperparams["optimizer_name"] == "SGD":
             hyperparams["momentum"] = trail.suggest_float("momentum", low=0.0, high=1.0)
         else:
-            hyperparams["beta1"] = trail.suggest_float("beta1", low=0.0, high=1.0)
-            hyperparams["beta2"] = trail.suggest_float("beta2", low=0.0, high=1.0)
+            hyperparams["beta1"] = trail.suggest_float("beta1", 0.0, 1.0)
+            hyperparams["beta2"] = trail.suggest_float("beta1", 0.0, 1.0)
         
         log_params(run, hyperparams)
         score = cross_validation_pt(
@@ -64,7 +71,7 @@ def objective(trail):
             data,
             device,
             hyperparams,
-            num_epochs=5,
+            num_epochs=1,
             n_splits=10,
             batch_size=64,
         )
@@ -75,15 +82,15 @@ def objective(trail):
 @timeit
 def optimize_with_optuna():
     study = optuna.create_study(direction="maximize")
-    study.optimize(objective, n_trials=40)
+    study.optimize(objective, n_trials=1)
 
     print("Best params: ", study.best_params)
     print("Best value: ", study.best_value)
 
 
 if __name__ == "__main__":
-    load_dotenv()
+    load_dotenv(dotenv_path=BASE_DIR)
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    data = pd.read_csv("data/final_data/augmented_data.csv")
+    data = pd.read_csv(DATA_DIR + "/final_data/augmented_data.csv")
 
     optimize_with_optuna()

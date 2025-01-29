@@ -36,6 +36,6 @@ if __name__ == '__main__':
     low = 5e-7
     high = 5e-2
     
-    alpha_beta_examples = [(2, 2), (2, 5), (3, 6), (3, 9), (5, 2), (8, 2)]
+    alpha_beta_examples = [(2, 2), (2, 5), (3, 6), (3, 9), (5, 2), (8, 2), (8, 1)]
     plot_beta_distributions(alpha_beta_examples)
     plot_beta_distributions(alpha_beta_examples, x_range=(low, high), log_scale=True)

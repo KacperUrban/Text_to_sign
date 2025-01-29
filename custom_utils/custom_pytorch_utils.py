@@ -1,3 +1,10 @@
+import os
+import sys
+
+parent_dir = os.path.dirname(os.getcwd())
+sys.path.append(parent_dir)
+
+from config import TOKENIZER_DIR, BASE_DIR
 import numpy as np
 import torch
 import pandas as pd
@@ -28,7 +35,7 @@ class TranslationDataset(Dataset):
     
 
 def collate_fn(batch):
-    tokenizer = AutoTokenizer.from_pretrained("model/tokenizer/")
+    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
     input_ids = [item['input_ids'].squeeze() for item in batch]
     attention_mask = [item['attention_mask'].squeeze() for item in batch]
     labels = [item['labels'].squeeze() for item in batch]
@@ -69,7 +76,7 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     if fold_name:
         preds = pd.DataFrame({"inputs" : all_inputs, "predictions" : all_preds, "labels" : all_labels})
         filename = f"{fold_name}.csv"
-        preds.to_csv(os.path.join('.', 'logs_cv', filename))
+        preds.to_csv(os.path.join(BASE_DIR, 'logs_cv', filename))
     final_bleu = np.mean(all_results)
     del outputs, predictions, references, inputs, batch
     gc.collect()

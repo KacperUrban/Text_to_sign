@@ -1,21 +1,30 @@
 import pandas as pd
 from datasets import Dataset, DatasetDict
-from custom_utils.custom_preprocessing import (
+import sys
+import os
+
+parent_dir = os.path.dirname(os.getcwd())
+sys.path.append(parent_dir)
+
+from config import DATA_DIR
+from custom_utils import (
     capitalize_sentence,
     load_data,
     split_data_from_list,
 )
 
 
+
 if __name__ == "__main__":
+
     # Load data
-    zus_data = pd.read_csv("data/Praca_Socjalna_ZUS_Clean.txt")
-    ratow_data = pd.read_csv("data/Ratownictwo_Medyczne_Clean.txt")
-    urzed_data = pd.read_csv("data/Urzedy_Instytucje_Administracja_Clean.txt")
-    policja_data = pd.read_csv("data/Policja_Straz_Pozarna_Clean.txt")
-    raw_data = load_data("data/urzad_dowody.odt")
+    zus_data = pd.read_csv(DATA_DIR + "/Praca_Socjalna_ZUS_Clean.txt")
+    ratow_data = pd.read_csv(DATA_DIR + "/Ratownictwo_Medyczne_Clean.txt")
+    urzed_data = pd.read_csv(DATA_DIR + "/Urzedy_Instytucje_Administracja_Clean.txt")
+    policja_data = pd.read_csv(DATA_DIR + "/Policja_Straz_Pozarna_Clean.txt")
+    raw_data = load_data(DATA_DIR + "/urzad_dowody.odt")
     urzad_dowod_data = split_data_from_list(raw_data)
-    augmented_data = pd.read_csv("data/augmented_data_draft.csv")
+    augmented_data = pd.read_csv(DATA_DIR + "/augmented_data_draft.csv")
     # Capitaliaze all sentences
     augmented_data["pl"] = augmented_data["pl"].apply(capitalize_sentence)
     augmented_data["mig"] = augmented_data["mig"].apply(capitalize_sentence)
@@ -23,37 +32,37 @@ if __name__ == "__main__":
     if sum(augmented_data.duplicated()) > 0:
         print(f"Number of duplicates: {sum(augmented_data.duplicated())}")
         augmented_data.drop_duplicates(inplace=True)
-    augmented_data.to_csv("data/final_data/augmented_data.csv", index=False)
+    augmented_data.to_csv(DATA_DIR + "/final_data/augmented_data.csv", index=False)
 
     zus_data["pl"] = zus_data["pl"].apply(capitalize_sentence)
     zus_data["mig"] = zus_data["mig"].apply(capitalize_sentence)
     if sum(zus_data.duplicated()) > 0:
         zus_data.drop_duplicates(inplace=True)
-    zus_data.to_csv("data/final_data/zus_data.csv", index=False)
+    zus_data.to_csv(DATA_DIR + "/final_data/zus_data.csv", index=False)
 
     ratow_data["pl"] = ratow_data["pl"].apply(capitalize_sentence)
     ratow_data["mig"] = ratow_data["mig"].apply(capitalize_sentence)
     if sum(ratow_data.duplicated()) > 0:
         ratow_data.drop_duplicates(inplace=True)
-    ratow_data.to_csv("data/final_data/ratownictwo_data.csv", index=False)
+    ratow_data.to_csv(DATA_DIR + "/final_data/ratownictwo_data.csv", index=False)
 
     urzed_data["pl"] = urzed_data["pl"].apply(capitalize_sentence)
     urzed_data["mig"] = urzed_data["mig"].apply(capitalize_sentence)
     if sum(urzed_data.duplicated()) > 0:
         urzed_data.drop_duplicates(inplace=True)
-    urzed_data.to_csv("data/final_data/urzedy_data.csv", index=False)
+    urzed_data.to_csv(DATA_DIR + "/final_data/urzedy_data.csv", index=False)
 
     policja_data["pl"] = policja_data["pl"].apply(capitalize_sentence)
     policja_data["mig"] = policja_data["mig"].apply(capitalize_sentence)
     if sum(policja_data.duplicated()) > 0:
         policja_data.drop_duplicates(inplace=True)
-    policja_data.to_csv("data/final_data/policja_data.csv", index=False)
+    policja_data.to_csv(DATA_DIR + "/final_data/policja_data.csv", index=False)
 
     urzad_dowod_data["pl"] = urzad_dowod_data["pl"].apply(capitalize_sentence)
     urzad_dowod_data["mig"] = urzad_dowod_data["mig"].apply(capitalize_sentence)
     if sum(urzad_dowod_data.duplicated()) > 0:
         urzad_dowod_data.drop_duplicates(inplace=True)
-    urzad_dowod_data.to_csv("data/final_data/urzad_dowod.csv", index=False)
+    urzad_dowod_data.to_csv(DATA_DIR + "/final_data/urzad_dowod.csv", index=False)
 
     # Concatanate all data
     all_data = pd.concat(
@@ -64,7 +73,7 @@ if __name__ == "__main__":
     if sum(all_data.duplicated()) > 0:
         all_data.drop_duplicates(inplace=True)
 
-    all_data.to_csv("data/final_data/all_data.csv", index=False)
+    all_data.to_csv(DATA_DIR + "/final_data/all_data.csv", index=False)
 
     # Create a dictionary for further preprocessing
     raw_dataset_list = []
@@ -93,4 +102,4 @@ if __name__ == "__main__":
     )
 
     # Save data
-    train_test_dataset.save_to_disk("data/final_data")
+    train_test_dataset.save_to_disk(DATA_DIR + "/final_data")
