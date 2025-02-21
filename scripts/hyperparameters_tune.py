@@ -45,15 +45,15 @@ def log_params(run, hyperparams):
 
 
 def objective(trail):
-    with neptune.init_run(tags=["TEST"]) as run:
+    with neptune.init_run(tags=["unfrozen"]) as run:
         model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
         tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
 
-        for params in model.model.encoder.layers.parameters():
-            params.requires_grad = False
+        # for params in model.model.encoder.layers.parameters():
+        #     params.requires_grad = False
 
-        hyperparams = defaultdict(int)
-        hyperparams["lr"] = trail.suggest_float("lr", low=5e-9, high=5e-4, log=True)
+        hyperparams = defaultdict(float)
+        hyperparams["lr"] = trail.suggest_float("lr", low=5e-8, high=5e-3, log=True)
         hyperparams["optimizer_name"] = trail.suggest_categorical(
             "optimizer", ["Adam", "SGD"]
         )
@@ -61,8 +61,8 @@ def objective(trail):
         if hyperparams["optimizer_name"] == "SGD":
             hyperparams["momentum"] = trail.suggest_float("momentum", low=0.0, high=1.0)
         else:
-            hyperparams["beta1"] = trail.suggest_float("beta1", 0.0, 1.0)
-            hyperparams["beta2"] = trail.suggest_float("beta1", 0.0, 1.0)
+            hyperparams["beta1"] = trail.suggest_float("beta1", low=0.0, high=1.0)
+            hyperparams["beta2"] = trail.suggest_float("beta2", low=0.0, high=1.0)
         
         log_params(run, hyperparams)
         score = cross_validation_pt(
@@ -71,7 +71,7 @@ def objective(trail):
             data,
             device,
             hyperparams,
-            num_epochs=1,
+            num_epochs=5,
             n_splits=10,
             batch_size=64,
         )
@@ -82,7 +82,7 @@ def objective(trail):
 @timeit
 def optimize_with_optuna():
     study = optuna.create_study(direction="maximize")
-    study.optimize(objective, n_trials=1)
+    study.optimize(objective, n_trials=100)
 
     print("Best params: ", study.best_params)
     print("Best value: ", study.best_value)
