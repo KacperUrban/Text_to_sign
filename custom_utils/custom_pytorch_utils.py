@@ -60,17 +60,21 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
 
     with torch.no_grad():
         for batch in dataloader:
+            batch_bleu = 0.0
             batch = {key: value.to(device) for key, value in batch.items()}
             outputs = model.generate(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"], max_length=100)
-            predictions = [tokenizer.decode(g, skip_special_tokens=True) for g in outputs]
-            references = [tokenizer.decode(g, skip_special_tokens=True) for g in batch["labels"]]
+            predictions = [tokenizer.decode(g, skip_special_tokens=True) or "empty" for g in outputs]
+            references = [tokenizer.decode(g, skip_special_tokens=True) or "empty" for g in batch["labels"]]
             inputs = [tokenizer.decode(g, skip_special_tokens=True) for g in batch["input_ids"]]
 
             all_preds.extend(predictions)
             all_labels.extend(references)
             all_inputs.extend(inputs)
 
-            batch_bleu = bleu_metric.compute(predictions=predictions, references=references)['bleu']
+            if predictions and references and all(predictions) and all(references):
+                batch_bleu = bleu_metric.compute(predictions=predictions, references=references)['bleu']
+            else:
+                print("Warning: Empty predictions or references found. Skipping BLEU calculation.")
             all_results.append(batch_bleu)
 
     if fold_name:
