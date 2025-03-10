@@ -40,14 +40,6 @@ def timeit(func):
     return wrapper
 
 
-def log_params(run, hyperparams):
-    run["hyperparameters/learning_rate"] = hyperparams["lr"]
-    run["hyperparameters/optimizer"] = hyperparams["optimizer_name"]
-    run["hyperparameters/beta1"] = hyperparams["beta1"]
-    run["hyperparameters/beta2"] = hyperparams["beta2"]
-    run["hyperparameters/momentum"] = hyperparams["momentum"]
-
-
 def objective(trail):
     with neptune.init_run(tags=["frozen"]) as run:
         model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
@@ -57,18 +49,18 @@ def objective(trail):
             params.requires_grad = False
 
         hyperparams = defaultdict(float)
-        hyperparams["lr"] = trail.suggest_float("lr", low=5e-8, high=5e-3, log=True)
-        hyperparams["optimizer_name"] = trail.suggest_categorical(
+        hyperparams["learning_rate"] = trail.suggest_float("lr", low=5e-8, high=5e-3, log=True)
+        hyperparams["optimizer"] = trail.suggest_categorical(
             "optimizer", ["Adam", "SGD"]
         )
 
-        if hyperparams["optimizer_name"] == "SGD":
+        if hyperparams["optimizer"] == "SGD":
             hyperparams["momentum"] = trail.suggest_float("momentum", low=0.0, high=1.0)
         else:
             hyperparams["beta1"] = trail.suggest_float("beta1", low=0.0, high=1.0)
             hyperparams["beta2"] = trail.suggest_float("beta2", low=0.0, high=1.0)
         
-        log_params(run, hyperparams)
+        run["hyperparameters"] = hyperparams
         score = cross_validation_pt(
             model,
             tokenizer,

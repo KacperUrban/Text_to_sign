@@ -10,12 +10,13 @@ import torch
 import pandas as pd
 from torch.utils.data import Dataset
 from torch.nn.utils.rnn import pad_sequence
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from sklearn.model_selection import KFold
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from torch.optim import Adam, SGD
+from torch.optim import Adam, SGD, Optimizer
 import evaluate
+from evaluate import EvaluationModule
 import os
 import gc
 
@@ -51,7 +52,8 @@ def collate_fn(batch):
     }
 
 
-def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fold_name=None):
+def evaluate_model_on_bleu(model: AutoModelForSeq2SeqLM, dataloader: DataLoader, tokenizer: AutoTokenizer, bleu_metric: EvaluationModule, 
+                           device: str, fold_name: str=None) -> float:
     model.eval()
     all_inputs = []
     all_preds = []
@@ -88,7 +90,7 @@ def evaluate_model_on_bleu(model, dataloader, tokenizer, bleu_metric, device, fo
     return np.round(final_bleu, 3)
 
 
-def train(model, optimizer, train_dataloader, device, num_epochs):
+def train(model: AutoModelForSeq2SeqLM, optimizer: Optimizer, train_dataloader: DataLoader, device: str, num_epochs: int) -> AutoModelForSeq2SeqLM:
     model.train()
     for epoch in range(num_epochs):
         for batch in tqdm(train_dataloader):
@@ -101,10 +103,11 @@ def train(model, optimizer, train_dataloader, device, num_epochs):
             optimizer.step()
     return model
 
-def cross_validation_pt(model, tokenizer, data, device, hyperparams, num_epochs=5, n_splits=10, batch_size=16):
+def cross_validation_pt(model: AutoModelForSeq2SeqLM, tokenizer: AutoTokenizer, data: pd.DataFrame, device: str, hyperparams: dict, 
+                        num_epochs: int=5, n_splits: int=10, batch_size: int=16) -> float:
     bleu_metric = evaluate.load("bleu")
     initial_state_dict = model.state_dict()
-    kfold = KFold(n_splits=n_splits, shuffle=True)
+    kfold = KFold(n_splits=n_splits, shuffle=True, random_state=42)
     avg_bleu = 0
     train_data = TranslationDataset(data.pl, data.mig, tokenizer)
     for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
@@ -114,10 +117,10 @@ def cross_validation_pt(model, tokenizer, data, device, hyperparams, num_epochs=
         
         model.load_state_dict(initial_state_dict)
         model.to(device)            
-        if hyperparams["optimizer_name"] == "Adam":
-            optimizer = Adam(model.parameters(), lr=hyperparams["lr"], betas=(hyperparams['beta1'], hyperparams['beta2']))
-        elif hyperparams["optimizer_name"] == "SGD":
-            optimizer = SGD(model.parameters(), lr=hyperparams["lr"], momentum=hyperparams["momentum"])
+        if hyperparams["optimizer"] == "Adam":
+            optimizer = Adam(model.parameters(), lr=hyperparams["learning_rate"], betas=(hyperparams['beta1'], hyperparams['beta2']))
+        elif hyperparams["optimizer"] == "SGD":
+            optimizer = SGD(model.parameters(), lr=hyperparams["learning_rate"], momentum=hyperparams["momentum"])
         
         model = train(model, optimizer, train_dataloader, device, num_epochs)
 
