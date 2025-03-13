@@ -82,6 +82,35 @@ def cross_valid_diff_files(filepaths: list[str], device: str, hyperparams: dict)
         run["score/BLEU"] = round(final_score / len(filepaths), 4)
         
 
+def test_on_specific_domain(filepaths: list[str], device: str, hyperparams: dict) -> None:
+    for filepath in filepaths:
+        tag = filepath.split('_')[0]
+        with neptune.init_run(tags=["cvtest", "frozen", "augmented", "best params", tag]) as run:
+            model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
+            tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
+
+            for params in model.model.encoder.layers.parameters():
+                params.requires_grad = False
+
+            data = pd.read_csv(DATA_DIR + "/final_data/" + filepath, names=["pl", "mig"], header=None)
+            data = data.dropna().reset_index(drop=True)
+
+            score = cross_validation_pt(
+                model,
+                tokenizer,
+                data,
+                device,
+                hyperparams,
+                num_epochs=hyperparams["epochs"],
+                n_splits=10,
+                batch_size=hyperparams["batch_size"],
+            )
+            run["hyperparameters"] = hyperparams
+            run["score/BLEU"] = score
+            print(f"{score}")
+
+          
+
 if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -98,5 +127,5 @@ if __name__ == "__main__":
          "batch_size" : 64,
     }
     
-    cross_valid_diff_files(filepath_list, device, best_params)
+    test_on_specific_domain(filepath_list, device, best_params)
     # train_and_test(best_params, data, device)
