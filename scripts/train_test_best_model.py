@@ -38,9 +38,7 @@ def train_and_test(best_params: dict, data: pd.DataFrame, device: str) -> None:
                 data,
                 device,
                 best_params,
-                num_epochs=best_params["epochs"],
                 n_splits=10,
-                batch_size=best_params["batch_size"],
             )
             run["hyperparameters"] = best_params
             run["score/BLEU"] = score
@@ -101,9 +99,7 @@ def test_on_specific_domain(filepaths: list[str], device: str, hyperparams: dict
                 data,
                 device,
                 hyperparams,
-                num_epochs=hyperparams["epochs"],
                 n_splits=10,
-                batch_size=hyperparams["batch_size"],
             )
             run["hyperparameters"] = hyperparams
             run["score/BLEU"] = score
