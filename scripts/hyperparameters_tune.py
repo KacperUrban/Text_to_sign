@@ -49,6 +49,8 @@ def objective(trail):
             params.requires_grad = False
 
         hyperparams = defaultdict(float)
+        hyperparams["batch_size"] = 64
+        hyperparams["epcohs"] = 5
         hyperparams["learning_rate"] = trail.suggest_float("lr", low=5e-8, high=5e-3, log=True)
         hyperparams["optimizer"] = trail.suggest_categorical(
             "optimizer", ["Adam", "SGD"]
@@ -67,9 +69,7 @@ def objective(trail):
             data,
             device,
             hyperparams,
-            num_epochs=5,
             n_splits=10,
-            batch_size=64,
         )
         run["score/BLEU"] = score
     return score

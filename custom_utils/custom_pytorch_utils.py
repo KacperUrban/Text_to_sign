@@ -104,7 +104,7 @@ def train(model: AutoModelForSeq2SeqLM, optimizer: Optimizer, train_dataloader: 
     return model
 
 def cross_validation_pt(model: AutoModelForSeq2SeqLM, tokenizer: AutoTokenizer, data: pd.DataFrame, device: str, hyperparams: dict, 
-                        num_epochs: int=5, n_splits: int=10, batch_size: int=16) -> float:
+                        n_splits: int = 10) -> float:
     bleu_metric = evaluate.load("bleu")
     initial_state_dict = model.state_dict()
     kfold = KFold(n_splits=n_splits, shuffle=True, random_state=42)
@@ -112,8 +112,8 @@ def cross_validation_pt(model: AutoModelForSeq2SeqLM, tokenizer: AutoTokenizer, 
     train_data = TranslationDataset(data.pl, data.mig, tokenizer)
     for i, (train_idx, test_idx) in enumerate(kfold.split(train_data)):
         print(f"Fold {i + 1}")
-        train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
-        test_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
+        train_dataloader = DataLoader(train_data, batch_size=hyperparams["batch_size"], sampler=torch.utils.data.SubsetRandomSampler(train_idx), collate_fn=collate_fn)
+        test_dataloader = DataLoader(train_data, batch_size=hyperparams["batch_size"], sampler=torch.utils.data.SubsetRandomSampler(test_idx), collate_fn=collate_fn)
         
         model.load_state_dict(initial_state_dict)
         model.to(device)            
@@ -122,7 +122,7 @@ def cross_validation_pt(model: AutoModelForSeq2SeqLM, tokenizer: AutoTokenizer, 
         elif hyperparams["optimizer"] == "SGD":
             optimizer = SGD(model.parameters(), lr=hyperparams["learning_rate"], momentum=hyperparams["momentum"])
         
-        model = train(model, optimizer, train_dataloader, device, num_epochs)
+        model = train(model, optimizer, train_dataloader, device, hyperparams["epochs"])
 
         bleu_score = evaluate_model_on_bleu(model, test_dataloader, tokenizer, bleu_metric, device, f"Fold_{i + 1}")
         avg_bleu += bleu_score
