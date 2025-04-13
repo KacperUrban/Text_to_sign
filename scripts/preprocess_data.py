@@ -103,3 +103,20 @@ if __name__ == "__main__":
 
     # Save data
     train_test_dataset.save_to_disk(DATA_DIR + "/final_data")
+
+    # preprocess German data
+    data_de_train = pd.read_csv(DATA_DIR + "/PHOENIX-2014-T.train.corpus.csv", sep="|")
+    data_de_dev = pd.read_csv(DATA_DIR + "/PHOENIX-2014-T.dev.corpus.csv", sep="|")
+    data_de_test = pd.read_csv(DATA_DIR + "/PHOENIX-2014-T.test.corpus.csv", sep="|")
+
+    data_de_train.drop(["name", "video", "start", "end", "speaker"], inplace=True, axis=1)
+    data_de_dev.drop(["name", "video", "start", "end", "speaker"], inplace=True, axis=1)
+    data_de_test.drop(["name", "video", "start", "end", "speaker"], inplace=True, axis=1)
+
+    data_de_train = data_de_train.rename(columns={"orth" : "mig", "translation" : "de"})
+    data_de_dev = data_de_dev.rename(columns={"orth" : "mig", "translation" : "de"})
+    data_de_test = data_de_test.rename(columns={"orth" : "mig", "translation" : "de"})
+
+    data_de_train.to_csv(DATA_DIR + "/final_data/de/train_data.csv")
+    data_de_dev.to_csv(DATA_DIR + "/final_data/de/dev_data.csv")
+    data_de_test.to_csv(DATA_DIR + "/final_data/de/test_data.csv")
