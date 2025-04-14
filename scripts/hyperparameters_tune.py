@@ -4,17 +4,19 @@ import os
 parent_dir = os.path.dirname(os.getcwd())
 sys.path.append(parent_dir)
 
-from config import DATA_DIR, MODEL_DIR, TOKENIZER_DIR, BASE_DIR
+from config import DATA_DIR, MODEL_DIR, TOKENIZER_DIR, BASE_DIR, TOKENIZER_DE_DIR
 from custom_utils import (
     cross_validation_pt,
     TranslationDataset,
     collate_fn,
     train,
     evaluate_model_on_bleu,
+    collate_fn_de,
+    train_amp
 )
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
-from torch.optim import Adam
+from torch.optim import Adam, SGD
 from torch.utils.data import DataLoader
 import evaluate
 from dotenv import load_dotenv
@@ -66,9 +68,12 @@ def objective(trail):
 
         if hyperparams["optimizer"] == "SGD":
             hyperparams["momentum"] = trail.suggest_float("momentum", low=0.0, high=1.0)
+            hyperparams["beta1"] = 0.0
+            hyperparams["beta2"] = 0.0
         else:
             hyperparams["beta1"] = trail.suggest_float("beta1", low=0.0, high=1.0)
             hyperparams["beta2"] = trail.suggest_float("beta2", low=0.0, high=1.0)
+            hyperparams["momentum"] = 0.0
 
         run["hyperparameters"] = hyperparams
         score = cross_validation_pt(
@@ -83,7 +88,72 @@ def objective(trail):
     return score
 
 
+def objective_de(trail):
+    with neptune.init_run(tags=["unfrozen", "hyperparams tuning", "de"]) as run:
+        model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR + "_de")
+        tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DE_DIR)
+
+        model.to(device)
+
+        hyperparams = defaultdict(float)
+        hyperparams["batch_size"] = 32
+        hyperparams["epochs"] = 10
+
+        train_dataset = TranslationDataset(train_data.de, train_data.mig, tokenizer)
+        train_dataloader = DataLoader(
+            train_dataset, batch_size=hyperparams["batch_size"], shuffle=True, collate_fn=collate_fn_de
+        )
+
+        dev_dataset = TranslationDataset(dev_data.de, dev_data.mig, tokenizer)
+        dev_dataloader = DataLoader(
+            dev_dataset, batch_size=hyperparams["batch_size"], shuffle=False, collate_fn=collate_fn_de
+        )
+        
+        hyperparams["learning_rate"] = trail.suggest_float(
+            "lr", low=5e-8, high=5e-3, log=True
+        )
+        hyperparams["optimizer"] = trail.suggest_categorical(
+            "optimizer", ["Adam", "SGD"]
+        )
+
+        if hyperparams["optimizer"] == "SGD":
+            hyperparams["momentum"] = trail.suggest_float("momentum", low=0.0, high=1.0)
+            optimizer = SGD(
+                model.parameters(),
+                lr=hyperparams["learning_rate"],
+                momentum=hyperparams["momentum"],
+            )
+            hyperparams["beta1"] = 0.0
+            hyperparams["beta2"] = 0.0
+        else:
+            hyperparams["beta1"] = trail.suggest_float("beta1", low=0.0, high=1.0)
+            hyperparams["beta2"] = trail.suggest_float("beta2", low=0.0, high=1.0)
+            optimizer = Adam(
+                model.parameters(),
+                lr=hyperparams["learning_rate"],
+                betas=(hyperparams["beta1"], hyperparams["beta2"]),
+            )
+            hyperparams["momentum"] = 0.0
+
+
+        run["hyperparameters"] = hyperparams
+        model = train_amp(model, optimizer, train_dataloader, device, hyperparams["epochs"])
+        score = evaluate_model_on_bleu(
+            model, dev_dataloader, tokenizer, bleu_metric, device
+        )
+        run["score/BLEU"] = score
+    return score
+
+
 def tune_number_of_epochs(data: pd.DataFrame, device: str) -> None:
+    """This function evaluate model on best hyperparams (tuned before) on predefined
+    range of epochs. This functions prepare data, load model, train model, evaluate on BLEU
+    and log all information in Neptune.
+
+    Args:
+        data (pd.DataFrame): data for epochs tuning
+        device (str): pytorch device (e.g. GPU 'cuda' or CPU 'cpu')
+    """
     train_indices = data.sample(frac=0.85, random_state=42).index
     tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
 
@@ -135,10 +205,25 @@ def optimize_with_optuna():
     print("Best value: ", study.best_value)
 
 
+@timeit
+def optimize_with_optuna_de():
+    study = optuna.create_study(direction="maximize")
+    study.optimize(objective_de, n_trials=100)
+
+    print("Best params: ", study.best_params)
+    print("Best value: ", study.best_value)
+
+
 if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    bleu_metric = evaluate.load("bleu")
     data = pd.read_csv(DATA_DIR + "/final_data/augmented_data.csv")
+    train_data = pd.read_csv(DATA_DIR + "/final_data/de/train_data.csv")
+    dev_data = pd.read_csv(DATA_DIR + "/final_data/de/dev_data.csv")
 
-    tune_number_of_epochs(data, device)
+    print(device.type)
+
+    # tune_number_of_epochs(data, device)
     # optimize_with_optuna()
+    optimize_with_optuna_de()

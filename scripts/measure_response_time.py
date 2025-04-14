@@ -23,6 +23,20 @@ def measure_response_time(
     tokenizer: AutoTokenizer,
     hyperparams: dict,
 ):
+    """This function train model with best params and then check time of response.
+    In this case measure time of translation. For bigger picture mean and standard
+    deviation is returned.
+
+    Args:
+        data (pd.DataFrame): data for checking time of response
+        device (str): pytorch device (e.g. GPU 'cuda' or CPU 'cpu')
+        model (AutoModelForSeq2SeqLM): model, which will be trained and checked
+        tokenizer (AutoTokenizer): model toknizer
+        hyperparams (dict): dictionary with best params (e.g. optimizer, lr etc.)
+
+    Returns:
+        _type_: returned times of responses (mean and std)
+    """
     train_data = data
     test_data = data.copy()
 

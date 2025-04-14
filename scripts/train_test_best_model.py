@@ -24,6 +24,14 @@ from tqdm import tqdm
 
 
 def load_files(filepaths: list[str]) -> pd.DataFrame:
+    """This is helper function for loading and concatenating data from
+    different files.
+    Args:
+        filepaths (list[str]): path to files to load
+
+    Returns:
+        pd.DataFrame: hollistic Dataframe (contains elements from every files)
+    """
     final_df = pd.read_csv(DATA_DIR + "/final_data/" + filepaths[0])
     for i in range(1, len(filepaths)):
         tmp_df = pd.read_csv(
@@ -34,6 +42,13 @@ def load_files(filepaths: list[str]) -> pd.DataFrame:
 
 
 def train_and_test(best_params: dict, data: pd.DataFrame, device: str) -> None:
+    """This function test model on cross validation.
+
+    Args:
+        best_params (dict): set of best params (e.g. optimizer, lr etc.)
+        data (pd.DataFrame): data for testing
+        device (str): pytorch device (e.g. GPU 'cuda' or CPU 'cpu')
+    """
     with neptune.init_run(tags=["test", "best params", "frozen", "augmented"]) as run:
         model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
         tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
@@ -57,6 +72,15 @@ def train_and_test(best_params: dict, data: pd.DataFrame, device: str) -> None:
 def cross_valid_diff_files(
     filepaths: list[str], device: str, hyperparams: dict
 ) -> None:
+    """This function goal is to cross validate model on different files. You can
+    have different domain translation in different files (e.g. Police, Emergency medical services etc.)
+    and you want to check how your model is doing across different domains. This function enable it.
+
+    Args:
+        filepaths (list[str]): list of files
+        device (str): pytorch device (e.g. GPU 'cuda' or CPU 'cpu')
+        hyperparams (dict): set of best params (e.g. optimizer, lr etc.)
+    """
     final_score = 0
     bleu_metric = evaluate.load("bleu")
     with neptune.init_run(tags=["cvtest", "frozen", "augmented", "best params"]) as run:
@@ -111,6 +135,14 @@ def cross_valid_diff_files(
 def test_on_specific_domain(
     filepaths: list[str], device: str, hyperparams: dict
 ) -> None:
+    """This function cross validate model on specific domain and file. Additonaly
+    hyperparams and result to Neptune.
+
+    Args:
+        filepaths (list[str]): list of files
+        device (str): pytorch device (e.g. GPU 'cuda' or CPU 'cpu')
+        hyperparams (dict): set of best params (e.g. optimizer, lr etc.)
+    """
     for filepath in filepaths:
         tag = filepath.split("_")[0]
         with neptune.init_run(
