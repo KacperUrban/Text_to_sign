@@ -11,18 +11,18 @@ from dotenv import load_dotenv
 import pandas as pd
 from custom_utils import cross_validation_pt
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     hyperparams = {
-         "learning_rate" : 0.000301242,
-         "optimizer" : "Adam",
-         "momentum" : 0.0,
-         "beta1" : 0.791376,
-         "beta2" : 0.760868,
-         "epochs" : 20,
-         "batch_size" : 64,
+        "learning_rate": 0.000301242,
+        "optimizer": "Adam",
+        "momentum": 0.0,
+        "beta1": 0.791376,
+        "beta2": 0.760868,
+        "epochs": 20,
+        "batch_size": 64,
     }
 
     model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
@@ -30,4 +30,6 @@ if __name__ == '__main__':
 
     data = pd.read_csv(DATA_DIR + "/final_data/all_data.csv")
 
-    print(f"Average BLEU score: {cross_validation_pt(model, tokenizer, data, device, hyperparams=hyperparams, n_splits=3)}")
+    print(
+        f"Average BLEU score: {cross_validation_pt(model, tokenizer, data, device, hyperparams=hyperparams, n_splits=3)}"
+    )

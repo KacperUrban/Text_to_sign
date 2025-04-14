@@ -9,7 +9,10 @@ from config import MODEL_DIR, TOKENIZER_DIR, TOKENIZER_DE_DIR
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from transformers import pipeline
 
-def load_save_check_model(PATH_R: str, PATH_M_F: str, PATH_T_F: str, sentence_to_translation: str) -> None:
+
+def load_save_check_model(
+    PATH_R: str, PATH_M_F: str, PATH_T_F: str, sentence_to_translation: str
+) -> None:
     """This function load model and tokenizer from remote HuggingFace repository. Then save model to the local folder
     and do translation on specified sentence. The process have to ensure that base model was properly fetched and saved.
 
@@ -38,9 +41,10 @@ def load_save_check_model(PATH_R: str, PATH_M_F: str, PATH_T_F: str, sentence_to
     print(translation(sentence_to_translation))
 
 
-
 if __name__ == "__main__":
 
-    PATHS = {"pl" : "Helsinki-NLP/opus-mt-pl-en", "de" : "Helsinki-NLP/opus-mt-de-en"}
+    PATHS = {"pl": "Helsinki-NLP/opus-mt-pl-en", "de": "Helsinki-NLP/opus-mt-de-en"}
     load_save_check_model(PATHS["pl"], MODEL_DIR, TOKENIZER_DIR, "Lubie jesc jablka!")
-    load_save_check_model(PATHS["de"], MODEL_DIR + "_de", TOKENIZER_DE_DIR, "Ich esse gerne Äpfel!")
+    load_save_check_model(
+        PATHS["de"], MODEL_DIR + "_de", TOKENIZER_DE_DIR, "Ich esse gerne Äpfel!"
+    )
