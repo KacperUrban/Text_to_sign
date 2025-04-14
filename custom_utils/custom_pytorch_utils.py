@@ -4,7 +4,7 @@ import sys
 parent_dir = os.path.dirname(os.getcwd())
 sys.path.append(parent_dir)
 
-from config import TOKENIZER_DIR, BASE_DIR
+from config import TOKENIZER_DIR, BASE_DIR, TOKENIZER_DE_DIR
 import numpy as np
 import torch
 import pandas as pd
@@ -37,6 +37,23 @@ class TranslationDataset(Dataset):
 
 def collate_fn(batch):
     tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
+    input_ids = [item['input_ids'].squeeze() for item in batch]
+    attention_mask = [item['attention_mask'].squeeze() for item in batch]
+    labels = [item['labels'].squeeze() for item in batch]
+
+    input_ids = pad_sequence(input_ids, batch_first=True, padding_value=tokenizer.pad_token_id)
+    attention_mask = pad_sequence(attention_mask, batch_first=True, padding_value=0)
+    labels = pad_sequence(labels, batch_first=True, padding_value=tokenizer.pad_token_id)
+
+    return {
+        'input_ids': input_ids,
+        'attention_mask': attention_mask,
+        'labels': labels
+    }
+
+
+def collate_fn_de(batch):
+    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DE_DIR)
     input_ids = [item['input_ids'].squeeze() for item in batch]
     attention_mask = [item['attention_mask'].squeeze() for item in batch]
     labels = [item['labels'].squeeze() for item in batch]

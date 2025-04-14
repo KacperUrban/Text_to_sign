@@ -117,6 +117,15 @@ if __name__ == "__main__":
     data_de_dev = data_de_dev.rename(columns={"orth" : "mig", "translation" : "de"})
     data_de_test = data_de_test.rename(columns={"orth" : "mig", "translation" : "de"})
 
+    data_de_train.mig = data_de_train.mig.str.capitalize()
+    data_de_train.de = data_de_train.de.str.capitalize()
+
+    data_de_dev.mig = data_de_dev.mig.str.capitalize()
+    data_de_dev.de = data_de_dev.de.str.capitalize()
+
+    data_de_test.mig = data_de_test.mig.str.capitalize()
+    data_de_test.de = data_de_test.de.str.capitalize()
+
     data_de_train.to_csv(DATA_DIR + "/final_data/de/train_data.csv")
     data_de_dev.to_csv(DATA_DIR + "/final_data/de/dev_data.csv")
     data_de_test.to_csv(DATA_DIR + "/final_data/de/test_data.csv")
