@@ -142,7 +142,7 @@ dmypy.json
 /ttsvenv
 
 #models and tokenizer
-/model
+/models
 
 # logs
 /logs_cv
