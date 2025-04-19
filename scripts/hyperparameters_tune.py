@@ -89,9 +89,12 @@ def objective(trail):
 
 
 def objective_de(trail):
-    with neptune.init_run(tags=["unfrozen", "hyperparams tuning", "de"]) as run:
+    with neptune.init_run(tags=["frozen", "hyperparams tuning", "de"]) as run:
         model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR + "_de")
         tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DE_DIR)
+
+        for params in model.model.encoder.layers.parameters():
+            params.requires_grad = False
 
         model.to(device)
 
@@ -195,6 +198,51 @@ def tune_number_of_epochs(data: pd.DataFrame, device: str) -> None:
             run["hyperparameters/epochs"] = epoch
             run["score/BLEU"] = score
 
+def tune_number_of_epochs_de(train_data: pd.DataFrame, test_data: pd.DataFrame, device: str) -> None:
+    """This function evaluate model on best hyperparams (tuned before) on predefined
+    range of epochs. This functions prepare data, load model, train model, evaluate on BLEU
+    and log all information in Neptune.
+
+    Args:
+        data (pd.DataFrame): data for epochs tuning
+        device (str): pytorch device (e.g. GPU 'cuda' or CPU 'cpu')
+    """
+    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DE_DIR)
+
+    train_dataset = TranslationDataset(train_data.de, train_data.mig, tokenizer)
+    train_dataloader = DataLoader(
+        train_dataset, batch_size=32, shuffle=True, collate_fn=collate_fn_de
+    )
+
+    valid_dataset = TranslationDataset(test_data.de, test_data.mig, tokenizer)
+    valid_dataloader = DataLoader(
+        valid_dataset, batch_size=32, shuffle=False, collate_fn=collate_fn_de
+    )
+    bleu_metric = evaluate.load("bleu")
+
+    for epoch in tqdm(range(5, 51, 5)):
+        with neptune.init_run(tags=["frozen", "epochs", "de"]) as run:
+            model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR + "_de")
+            model.to(device)
+            optimizer = Adam(
+                model.parameters(), lr=0.0000269626, betas=(0.46665, 0.641191)
+            )
+
+            for params in model.model.encoder.layers.parameters():
+                params.requires_grad = False
+
+            model = train_amp(model, optimizer, train_dataloader, device, epoch)
+            score = evaluate_model_on_bleu(
+                model, valid_dataloader, tokenizer, bleu_metric, device
+            )
+
+            run["hyperparameters/learning_rate"] = 0.0000269626
+            run["hyperparameters/optimizer"] = "Adam"
+            run["hyperparameters/beta1"] = 0.46665
+            run["hyperparameters/beta2"] = 0.641191
+            run["hyperparameters/momentum"] = 0.0
+            run["hyperparameters/epochs"] = epoch
+            run["score/BLEU"] = score
 
 @timeit
 def optimize_with_optuna():
@@ -208,7 +256,7 @@ def optimize_with_optuna():
 @timeit
 def optimize_with_optuna_de():
     study = optuna.create_study(direction="maximize")
-    study.optimize(objective_de, n_trials=100)
+    study.optimize(objective_de, n_trials=50)
 
     print("Best params: ", study.best_params)
     print("Best value: ", study.best_value)
@@ -226,4 +274,5 @@ if __name__ == "__main__":
 
     # tune_number_of_epochs(data, device)
     # optimize_with_optuna()
-    optimize_with_optuna_de()
+    # optimize_with_optuna_de()
+    tune_number_of_epochs_de(train_data, dev_data, device)
