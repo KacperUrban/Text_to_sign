@@ -1,5 +1,8 @@
+import random
 import sys
 import os
+
+import numpy as np
 
 parent_dir = os.path.dirname(os.getcwd())
 sys.path.append(parent_dir)
@@ -174,6 +177,11 @@ def test_on_specific_domain(
 
 if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
+
+    torch.manual_seed(42)
+    np.random.seed(42)
+    random.seed(42)
+
     device = "cuda" if torch.cuda.is_available() else "cpu"
     data = pd.read_csv(DATA_DIR + "/final_data/augmented_data.csv")
     filepath_list = [

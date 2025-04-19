@@ -24,14 +24,21 @@ from custom_utils import (
     evaluate_model_on_bleu,
     collate_fn,
     collate_fn_de,
+    train_amp,
 )
 from sklearn.model_selection import train_test_split
 import evaluate
+import numpy as np
+import random
 
 if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     bleu_metric = evaluate.load("bleu")
+
+    torch.manual_seed(42)
+    np.random.seed(42)
+    random.seed(42)
 
     hyperparams = {
         "learning_rate": 0.000301242,
@@ -39,7 +46,7 @@ if __name__ == "__main__":
         "momentum": 0.0,
         "beta1": 0.791376,
         "beta2": 0.760868,
-        "epochs": 20,
+        "epochs": 5,
         "batch_size": 64,
     }
 
@@ -75,7 +82,7 @@ if __name__ == "__main__":
     )
 
     model.to(device)
-    model = train(model, optimizer, train_dataloader, device, hyperparams["epochs"])
+    model = train_amp(model, optimizer, train_dataloader, device, hyperparams["epochs"])
     score = evaluate_model_on_bleu(
         model, test_dataloader, tokenizer, bleu_metric, device
     )

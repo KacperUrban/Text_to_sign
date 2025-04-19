@@ -1,3 +1,4 @@
+import random
 import sys
 import os
 
@@ -264,6 +265,9 @@ def optimize_with_optuna_de():
 
 if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
+    torch.manual_seed(42)
+    np.random.seed(42)
+    random.seed(42)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     bleu_metric = evaluate.load("bleu")
     data = pd.read_csv(DATA_DIR + "/final_data/augmented_data.csv")
@@ -272,7 +276,7 @@ if __name__ == "__main__":
 
     print(device.type)
 
-    # tune_number_of_epochs(data, device)
     # optimize_with_optuna()
     # optimize_with_optuna_de()
+    # tune_number_of_epochs(data, device)
     tune_number_of_epochs_de(train_data, dev_data, device)

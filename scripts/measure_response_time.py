@@ -1,3 +1,4 @@
+import random
 import sys
 import os
 
@@ -83,6 +84,11 @@ def measure_response_time(
 
 if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
+    
+    torch.manual_seed(42)
+    np.random.seed(42)
+    random.seed(42)
+    
     data = pd.read_csv(DATA_DIR + "/final_data/augmented_data.csv")
     model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
     tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
