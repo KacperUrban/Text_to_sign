@@ -27,21 +27,11 @@ from tqdm import tqdm
 
 
 def load_files(filepaths: list[str]) -> pd.DataFrame:
-    """This is helper function for loading and concatenating data from
-    different files.
-    Args:
-        filepaths (list[str]): path to files to load
-
-    Returns:
-        pd.DataFrame: hollistic Dataframe (contains elements from every files)
-    """
-    final_df = pd.read_csv(DATA_DIR + "/final_data/" + filepaths[0])
-    for i in range(1, len(filepaths)):
-        tmp_df = pd.read_csv(
-            DATA_DIR + "/final_data/" + filepaths[i], names=["pl", "mig"], header=None
-        )
-        final_df = pd.concat([final_df, tmp_df], axis=0)
-    return final_df.reset_index(drop=True)
+    dfs = []
+    for filepath in filepaths:
+        df = pd.read_csv(DATA_DIR + "/final_data/" + filepath)
+        dfs.append(df)
+    return pd.concat(dfs, axis=0).reset_index(drop=True)
 
 
 def train_and_test(best_params: dict, data: pd.DataFrame, device: str) -> None:
@@ -86,7 +76,7 @@ def cross_valid_diff_files(
     """
     final_score = 0
     bleu_metric = evaluate.load("bleu")
-    with neptune.init_run(tags=["cvtest", "frozen", "augmented", "best params"]) as run:
+    with neptune.init_run(tags=["cvtest", "frozen", "augmented", "best params", "pl"]) as run:
         for i in tqdm(range(len(filepaths))):
             model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
             tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
@@ -120,6 +110,9 @@ def cross_valid_diff_files(
             test_dataloader = DataLoader(
                 test_data, batch_size=hyperparams["batch_size"], collate_fn=collate_fn
             )
+            if len(train_dataloader) == 0:
+                raise ValueError("Train dataloader is empty! Check your input files or data filtering.")
+
 
             model.to(device)
             model = train(
@@ -149,7 +142,7 @@ def test_on_specific_domain(
     for filepath in filepaths:
         tag = filepath.split("_")[0]
         with neptune.init_run(
-            tags=["cvtest", "frozen", "augmented", "best params", tag]
+            tags=["cvtest", "frozen", "augmented", "best params", "pl", tag]
         ) as run:
             model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR)
             tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
@@ -192,14 +185,15 @@ if __name__ == "__main__":
         "zus_data_augmented.csv",
     ]
     best_params = {
-        "learning_rate": 0.000301242,
+        "learning_rate": 0.000300162,
         "optimizer": "Adam",
         "momentum": 0.0,
-        "beta1": 0.791376,
-        "beta2": 0.760868,
-        "epochs": 20,
+        "beta1": 0.680805,
+        "beta2": 0.991713,
+        "epochs": 55,
         "batch_size": 64,
     }
 
-    test_on_specific_domain(filepath_list, device, best_params)
+    cross_valid_diff_files(filepath_list, device, best_params)
+    # test_on_specific_domain(filepath_list, device, best_params)
     # train_and_test(best_params, data, device)
