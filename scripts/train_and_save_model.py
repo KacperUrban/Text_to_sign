@@ -30,6 +30,7 @@ from sklearn.model_selection import train_test_split
 import evaluate
 import numpy as np
 import random
+import neptune
 
 if __name__ == "__main__":
     load_dotenv(dotenv_path=BASE_DIR)
@@ -41,13 +42,13 @@ if __name__ == "__main__":
     random.seed(42)
 
     hyperparams = {
-        "learning_rate": 0.000301242,
+        "learning_rate": 0.0000119347,
         "optimizer": "Adam",
         "momentum": 0.0,
-        "beta1": 0.791376,
-        "beta2": 0.760868,
-        "epochs": 5,
-        "batch_size": 64,
+        "beta1": 0.332396,
+        "beta2": 0.416326,
+        "epochs": 15,
+        "batch_size": 32,
     }
 
     # data = pd.read_csv(DATA_DIR + "/final_data/all_data.csv")
@@ -55,7 +56,7 @@ if __name__ == "__main__":
     # train_data, test_data  = train_test_split(data, test_size=0.1)
 
     train_data = pd.read_csv(DATA_DIR + "/final_data/de/train_data.csv")
-    dev_data = pd.read_csv(DATA_DIR + "/final_data/de/dev_data.csv")
+    dev_data = pd.read_csv(DATA_DIR + "/final_data/de/test_data.csv")
     model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_DIR + "_de")
     tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DE_DIR)
 
@@ -80,12 +81,15 @@ if __name__ == "__main__":
     test_dataloader = DataLoader(
         test_data, batch_size=hyperparams["batch_size"], collate_fn=collate_fn_de
     )
+    with neptune.init_run(tags=["best params", "de", "unfrozen", "test_test"]) as run:
+        model.to(device)
+        model = train_amp(model, optimizer, train_dataloader, device, hyperparams["epochs"])
+        score = evaluate_model_on_bleu(
+            model, test_dataloader, tokenizer, bleu_metric, device
+        )
+        print(f"BLEU score: {score}")
 
-    model.to(device)
-    model = train_amp(model, optimizer, train_dataloader, device, hyperparams["epochs"])
-    score = evaluate_model_on_bleu(
-        model, test_dataloader, tokenizer, bleu_metric, device
-    )
-    print(f"BLEU score: {score}")
+        run["hyperparameters"] = hyperparams
+        run["score/BLEU"] = score
 
-    model.save_pretrained(FINAL_MODEL_DIR + "_de", safe_serialization=True)
+        model.save_pretrained(FINAL_MODEL_DIR + "_de", safe_serialization=True)
